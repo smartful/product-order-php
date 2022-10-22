@@ -39,6 +39,6 @@
     </form>
   </div>
   <!-- le pied de page -->
-  <?php include("footer.php"); ?>
+  <?php include("./layout/footer.php"); ?>
   </body>
 </html>
