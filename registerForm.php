@@ -6,31 +6,27 @@ echo htmlHead("Inscription", "style");
         <div id="en_tete"></div>
         <!-- le menu -->
         <?php include("menu.php"); ?>
-        
-        <?php
-            //On se connecte au SGBD Mysql
-            include("./utils/connection_bd.php"); 
-        ?>
-        
+
         <!-- le corps -->
         <div id="corps">
-            <form method="post" action="formulaire_post.php">
+            <form method="post" action="registerFormProcess.php">
                 <fieldset>
-                    <legend>Main Description</legend>
+                    <legend>Description Principale</legend>
                     <table>
                         <tr>
-                            <td><label for="first_name">Prénom</label> </td>
-                            <td><input type=text name="first_name" id="first_name"/></td>
+                            <td><label for="firstname">Prénom</label> </td>
+                            <td><input type=text name="firstname" id="firstname"/></td>
                         </tr>
                         <tr>
-                            <td><label for="name">Nom</label> </td>
-                            <td><input type=text name="name" id="name"/></td>
+                            <td><label for="lastname">Nom</label> </td>
+                            <td><input type=text name="lastname" id="lastname"/></td>
                         </tr>
                     </table>
                 </fieldset>
 
                 <p>
-                    Votre mot de passe doit contenir au moins 8 caractères alphanumeriques.
+                    Votre mot de passe doit contenir au moins 8 caractères alphanumeriques. <br/>
+                    Voici les caractères spéciaux possible : <strong>éèùà@&</strong>
                 </p>
 
                 <fieldset>

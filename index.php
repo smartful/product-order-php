@@ -4,7 +4,6 @@ echo htmlHead("Product Order", "style");
 ?>
     <body>
         <div id="en_tete"></div>
-
         <?php include("menu.php"); ?>
 
         <div id="corps">

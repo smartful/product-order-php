@@ -1,5 +1,5 @@
 <?php
-function htmlHead(string $title, string $cssFileName) {
+function htmlHead(string $title, string $cssFileName): string {
   return <<<EOT
 <!DOCTYPE html>
 <html>
