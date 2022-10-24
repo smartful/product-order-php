@@ -12,7 +12,7 @@ echo htmlHead("Product Order", "style");
                 Vous pouvez vous inscrire
             </p>
 
-            <form method="post" action="main.php">
+            <form method="post" action="loginProcess.php">
                 <fieldset>
                     <legend>Vos accès</legend>
                     <table>

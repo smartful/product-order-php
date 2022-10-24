@@ -5,7 +5,7 @@ echo htmlHead("Inscription", "style");
 ?>
     <body>
         <div id="en_tete"></div>
-        <?php include("deconnexion_menu.php"); ?>
+        <?php include("deconnexionMenu.php"); ?>
 
         <div id="corps">
             <?php
