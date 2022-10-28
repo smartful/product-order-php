@@ -4,7 +4,7 @@ session_start();
 echo htmlHead("Inscription", "style");
 ?>
     <body>
-        <div id="en_tete"></div>
+        <?php include("./layout/header.php"); ?>
         <?php include("deconnexionMenu.php"); ?>
 
         <div id="corps">
@@ -50,7 +50,7 @@ echo htmlHead("Inscription", "style");
                 $_SESSION["firstname"] = $data["firstname"];
                 $_SESSION["lastname"] = $data["lastname"];
                 $user->closeCursor();
-                echo "Vous pouvez ajouter des produits et des bons de commandes.";
+                header("Location: home.php");
             } else {
                 header("Location: index.php");
             }

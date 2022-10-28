@@ -4,7 +4,7 @@ session_start();
 echo htmlHead("Home", "style");
 ?>
     <body>
-    <div id="en_tete"></div>
+    <?php include("./layout/header.php"); ?>
     <?php include("deconnexionMenu.php"); ?>
 
     <!-- le menu des activités -->

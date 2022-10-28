@@ -10,6 +10,8 @@ body {
   height: 100px;
   background-color: rgb(117, 0, 0);
   margin-bottom: 10px;
+  color: white;
+  padding: 15px 0 0 30px;
 }
 
 #menu {

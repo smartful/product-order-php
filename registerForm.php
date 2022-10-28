@@ -3,7 +3,7 @@ require("./layout/htmlHead.php");
 echo htmlHead("Inscription", "style");
 ?>
     <body>
-        <div id="en_tete"></div>
+        <?php include("./layout/header.php"); ?>
         <!-- le menu -->
         <?php include("menu.php"); ?>
 

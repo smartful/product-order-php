@@ -3,7 +3,7 @@ require("./layout/htmlHead.php");
 echo htmlHead("Product Order", "style");
 ?>
     <body>
-        <div id="en_tete"></div>
+        <?php include("./layout/header.php"); ?>
         <?php include("menu.php"); ?>
 
         <div id="corps">
