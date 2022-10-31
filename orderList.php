@@ -11,8 +11,12 @@ echo htmlHead("Order", "style");
     <?php include("themesMenu.php"); ?>
 
     <div id="corps">
-        <h1>Product Order</h1>
-        <h2>Order</h2>
+        <h1>Commandes</h1>
+        <h2>Ajouter une commande</h2>
+        <p>
+            <a href="addOrder.php">Formulaire d'ajout</a>
+        </p>
+        <h2>Liste des commandes</h2>
     </div>
     <?php include("./layout/footer.php"); ?>
     </body>

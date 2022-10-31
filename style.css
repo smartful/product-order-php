@@ -3,14 +3,16 @@ body {
   margin: auto;
   margin-top: 5px;
   margin-bottom: 5px;
+  background-color: #222;
+  color: #ddd;
 }
 
 #en_tete {
   width: 775px;
   height: 100px;
-  background-color: rgb(117, 0, 0);
+  background-color: rgb(169, 182, 209);
   margin-bottom: 10px;
-  color: white;
+  color: black;
   padding: 15px 0 0 30px;
 }
 
@@ -34,8 +36,8 @@ body {
 #pied_de_page {
   text-align: center;
   margin-top: 230px;
-  color: white;
-  background-color: rgb(117, 0, 0);
+  color: black;
+  background-color: rgb(169, 182, 209);
 }
 
 ul#menu_horizontale {
@@ -48,7 +50,7 @@ ul#menu_horizontale li {
 
 a {
   text-decoration: none;
-  color: rgb(117, 0, 0);
+  color: rgb(169, 182, 209);
 }
 
 a:hover {
@@ -56,25 +58,25 @@ a:hover {
 }
 
 .autor {
-  color: white;
+  color: black;
 }
 
 ul {
-  color: rgb(117, 0, 0);
+  color: rgb(169, 182, 209);
 }
 
 .description {
-  background-color: rgb(216, 216, 216);
+  background-color: rgb(75, 71, 71);
 }
 
 label {
-  color: black;
+  color: #ddd;
 }
 
 table,
 th,
 td {
-  border: 1px solid black;
+  border: 3px ridge rgb(169, 182, 209);
   border-collapse: collapse;
   padding: 4px;
 }
