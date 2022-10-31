@@ -71,6 +71,14 @@ label {
   color: black;
 }
 
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 4px;
+}
+
 .auteur_titre_non_lu {
   background-color: rgb(255, 110, 110);
 }

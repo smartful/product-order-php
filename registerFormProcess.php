@@ -1,7 +1,6 @@
 <?php
 require("./layout/htmlHead.php");
 session_start();
-
 echo htmlHead("Product Order", "style");
 ?>
     <body>
