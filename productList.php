@@ -37,8 +37,8 @@ echo htmlHead("Product", "style");
                     <tr>
                         <th>Référence</th>
                         <th>Désignation</th>
-                        <th>Prix unitaire<br/>(en € HT)</th>
-                        <th>Taux TVA<br/>(en %)</th>
+                        <th>Prix unitaire (HT)</th>
+                        <th>Taux TVA</th>
                         <th>Modifier</th>
                         <th>Supprimer</th>
                     </tr>
@@ -48,8 +48,8 @@ echo htmlHead("Product", "style");
                         <tr>
                             <td><?= $data[$i]["reference"]; ?></td>
                             <td><?= $data[$i]["designation"]; ?></td>
-                            <td><?= $data[$i]["unit_price"]; ?></td>
-                            <td><?= $data[$i]["rate"]; ?></td>
+                            <td><?= $data[$i]["unit_price"]; ?> €</td>
+                            <td><?= $data[$i]["rate"]; ?> %</td>
                             <td style="text-align:center;">
                                 <a href="updateProduct.php?id=<?= $data[$i]["id"]; ?>">
                                     <img src="./images/modifier.png" />

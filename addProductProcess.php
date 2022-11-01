@@ -41,7 +41,7 @@ echo htmlHead("Formulaire d'ajout", "style");
                 ]);
 
                 echo "Ajout du produit validé <br/><br/>";
-                echo "Vous pouver voir l'ajout sur <a href='productList.php'>la page des produits</a>.<br/><br/>";
+                echo "Vous pouvez voir l'ajout sur la <a href='productList.php'>page des produits</a>.<br/><br/>";
             }
 
             ?>
