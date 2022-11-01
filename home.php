@@ -12,6 +12,10 @@ echo htmlHead("Home", "style");
 
     <div id="corps">
         <h1>Product Order</h1>
+        <p>
+            Bienvenue <strong><?= $_SESSION["firstname"]; ?> <?= $_SESSION["lastname"]; ?></strong>. <br/>
+            Vous pouvez créer des produits et des bon de commandes en allant dans les activités.
+        </p>
     </div>
     <?php include("./layout/footer.php"); ?>
     </body>

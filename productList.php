@@ -49,8 +49,12 @@ echo htmlHead("Product", "style");
                             <td><?= $data[$i]["designation"]; ?></td>
                             <td><?= $data[$i]["unit_price"]; ?></td>
                             <td><?= $data[$i]["rate"]; ?></td>
-                            <td>update : <?= $data[$i]["id"]; ?></td>
-                            <td>delete : <?= $data[$i]["id"]; ?></td>
+                            <td style="text-align:center;">
+                                <a href="updateProduct.php?id=<?= $data[$i]["id"]; ?>"><img src="./images/modifier.png" /></a>
+                            </td>
+                            <td style="text-align:center;">
+                                <a href="deleteProduct.php?id=<?= $data[$i]["id"]; ?>"><img src="./images/supprimer.png" /></a>
+                            </td>
                         </tr>
                     <?php endfor;?>
                 </tbody>
