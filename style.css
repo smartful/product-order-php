@@ -81,6 +81,25 @@ td {
   padding: 4px;
 }
 
+.button {
+  width: 95px;
+  height: 35px;
+  cursor: pointer;
+  border-radius: 5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: black;
+  margin: 10px;
+}
+
+.button a {
+  color: black;
+}
+
+.deleteButton {
+  background-color: rgb(255, 110, 110);
+}
+
 .auteur_titre_non_lu {
   background-color: rgb(255, 110, 110);
 }

@@ -23,7 +23,8 @@ echo htmlHead("Product", "style");
 
             $products = $bdd->prepare("
                 SELECT id, reference, designation, unit_price, rate FROM products
-                WHERE user_id = :user_id;
+                WHERE user_id = :user_id
+                AND deleted = 0;
             ");
             $products->execute([
                 "user_id"=> $_SESSION["id"],
@@ -50,10 +51,14 @@ echo htmlHead("Product", "style");
                             <td><?= $data[$i]["unit_price"]; ?></td>
                             <td><?= $data[$i]["rate"]; ?></td>
                             <td style="text-align:center;">
-                                <a href="updateProduct.php?id=<?= $data[$i]["id"]; ?>"><img src="./images/modifier.png" /></a>
+                                <a href="updateProduct.php?id=<?= $data[$i]["id"]; ?>">
+                                    <img src="./images/modifier.png" />
+                                </a>
                             </td>
                             <td style="text-align:center;">
-                                <a href="deleteProduct.php?id=<?= $data[$i]["id"]; ?>"><img src="./images/supprimer.png" /></a>
+                                <a href="deleteProduct.php?id=<?= $data[$i]["id"]; ?>">
+                                    <img src="./images/supprimer.png" />
+                                </a>
                             </td>
                         </tr>
                     <?php endfor;?>

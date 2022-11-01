@@ -28,7 +28,7 @@ echo htmlHead("Product Order", "style");
                                 AND preg_match($passwordRegex, $pass)) {
                             //On se connecte au la SGBD Mysql
                             include("./utils/connexion_db.php");
-                            
+
                             //On ajoute les données entrée dans la table membres
                             $membres = $bdd->prepare("
                                 INSERT INTO users(firstname, lastname, email, password, register_date)

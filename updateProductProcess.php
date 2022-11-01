@@ -44,7 +44,7 @@ echo htmlHead("Formulaire de modification", "style");
                 ]);
 
                 echo "Modification du produit validé <br/><br/>";
-                echo "Vous pouver voir la modification sur <a href='productList.php'>la page des produits</a>.<br/><br/>";
+                echo "Vous pouver voir la modification sur la <a href='productList.php'>page des produits</a>.<br/><br/>";
             }
             ?>
         </div>

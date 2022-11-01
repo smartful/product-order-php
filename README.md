@@ -55,7 +55,7 @@ ALTER TABLE `users`
 COMMIT;
 
 --
--- Table structure for table `products`
+-- Structure de la table `products`
 --
 
 CREATE TABLE `products` (
@@ -66,35 +66,39 @@ CREATE TABLE `products` (
   `unit_price` float NOT NULL,
   `rate` float NOT NULL,
   `add_date` datetime NOT NULL,
-  `update_date` datetime NOT NULL
+  `update_date` datetime NOT NULL,
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `delete_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `products`
+-- Déchargement des données de la table `products`
 --
 
-INSERT INTO `products` (`id`, `user_id`, `reference`, `designation`, `unit_price`, `rate`, `add_date`, `update_date`) VALUES
-(1, 2, 'XKCR845', 'Livre sur Elon Musk', 8.55, 5.5, '2022-10-31 02:59:26', '2022-10-31 02:59:26'),
-(2, 2, 'KBTR124', 'I phone 14', 1899, 20, '2022-10-31 03:44:36', '2022-11-01 10:53:03');
+INSERT INTO `products` (`id`, `user_id`, `reference`, `designation`, `unit_price`, `rate`, `add_date`, `update_date`, `deleted`, `delete_date`) VALUES
+(1, 2, 'XKCR845', 'Livre sur Elon Musk', 8.99, 5.5, '2022-10-31 02:59:26', '2022-11-01 18:51:58', 0, '0000-00-00 00:00:00'),
+(2, 2, 'KBTR124', 'I phone 14', 1699, 20, '2022-10-31 03:44:36', '2022-11-01 18:47:00', 0, '0000-00-00 00:00:00'),
+(3, 2, 'AIUJ748', 'Croquettes pour nounours', 42.99, 5.5, '2022-11-01 15:52:01', '2022-11-01 18:44:04', 1, '2022-11-01 18:46:00'),
+(4, 2, 'KBTR125', 'I phone 14 PRO', 1899, 20, '2022-11-01 18:51:32', '2022-11-01 18:51:32', 0, '0000-00-00 00:00:00');
 
 --
--- Indexes for dumped tables
+-- Index pour les tables déchargées
 --
 
 --
--- Indexes for table `products`
+-- Index pour la table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT for table `products`
+-- AUTO_INCREMENT pour la table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 ```
