@@ -1,7 +1,7 @@
 <?php
 require("./layout/htmlHead.php");
 session_start();
-echo htmlHead("Product", "style");
+echo htmlHead("Produits", "style");
 ?>
     <body>
         <?php include("./layout/header.php"); ?>
@@ -18,7 +18,7 @@ echo htmlHead("Product", "style");
             </p>
             <h2>Liste des produits</h2>
             <?php
-            //On se connecte au la SGBD Mysql
+            // On se connecte au la SGBD Mysql
             include("./utils/connexion_db.php");
 
             $products = $bdd->prepare("
