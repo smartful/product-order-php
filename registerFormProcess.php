@@ -26,10 +26,10 @@ echo htmlHead("Product Order", "style");
                         $passwordRegex = "#^[a-zA-Z0-9éèùà@&]{8,15}$#";
                         if (preg_match($emailRegex, $email)
                                 AND preg_match($passwordRegex, $pass)) {
-                            //On se connecte au la SGBD Mysql
+                            // On se connecte au la SGBD Mysql
                             include("./utils/connexion_db.php");
 
-                            //On ajoute les données entrée dans la table membres
+                            // On ajoute les données entrée dans la table membres
                             $membres = $bdd->prepare("
                                 INSERT INTO users(firstname, lastname, email, password, register_date)
                                 VALUES(:prenom, :nom, :courriel, :pass, NOW());
@@ -40,7 +40,7 @@ echo htmlHead("Product Order", "style");
                                 "courriel"=> $email,
                                 "pass"=> password_hash($pass, PASSWORD_BCRYPT)
                             ]);
-                            //On met un lien vers la page perso
+                            // On met un lien vers la page perso
                             echo "Inscription validé <br/><br/>";
                             echo "Pour continuer veuillez vous rendre sur la page <strong>home</strong>, et vous connecter.<br/><br/>";
                             echo "Merci !";

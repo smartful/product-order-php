@@ -108,7 +108,6 @@ COMMIT;
 
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
-  `code` varchar(10) NOT NULL,
   `user_id` int(11) NOT NULL,
   `total_HT` float NOT NULL,
   `total_TTC` float NOT NULL,

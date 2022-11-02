@@ -9,7 +9,7 @@ echo htmlHead("Inscription", "style");
 
         <div id="corps">
             <?php
-            //On se connecte au SGBD Mysql
+            // On se connecte au SGBD Mysql
             include("./utils/connexion_db.php"); 
 
             // On vérifie que c'est le bon utilisateur

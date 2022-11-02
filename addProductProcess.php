@@ -25,7 +25,7 @@ echo htmlHead("Formulaire d'ajout", "style");
                 $unitPrice = htmlspecialchars($_POST['unit_price']);
                 $rate = htmlspecialchars($_POST['rate']);
 
-                //On se connecte au la SGBD Mysql
+                // On se connecte au la SGBD Mysql
                 include("./utils/connexion_db.php");
 
                 $product = $bdd->prepare("
@@ -43,7 +43,6 @@ echo htmlHead("Formulaire d'ajout", "style");
                 echo "Ajout du produit validé <br/><br/>";
                 echo "Vous pouvez voir l'ajout sur la <a href='productList.php'>page des produits</a>.<br/><br/>";
             }
-
             ?>
         </div>
         <?php include("./layout/footer.php"); ?>

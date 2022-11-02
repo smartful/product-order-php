@@ -19,7 +19,7 @@ echo htmlHead("Suppression d'un produit", "style");
             } else {
                 $idProduct = intval($_POST['id_product']);
 
-                //On se connecte au la SGBD Mysql
+                // On se connecte au la SGBD Mysql
                 include("./utils/connexion_db.php");
 
                 $product = $bdd->prepare("

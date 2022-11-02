@@ -15,15 +15,15 @@ echo htmlHead("Formulaire de modification", "style");
         //On se connecte au la SGBD Mysql
         include("./utils/connexion_db.php");
 
-        $products = $bdd->prepare("
+        $product = $bdd->prepare("
             SELECT id, reference, designation, unit_price, rate FROM products
             WHERE id = :product_id;
         ");
         $id = htmlspecialchars($_GET["id"]);
-        $products->execute([
+        $product->execute([
             "product_id"=> $id,
         ]);
-        $data = $products->fetch();
+        $data = $product->fetch();
         ?>
 
         <div id="corps">
