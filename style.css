@@ -1,5 +1,5 @@
 body {
-  width: 775px;
+  width: 1024px;
   margin: auto;
   margin-top: 5px;
   margin-bottom: 5px;
@@ -8,7 +8,7 @@ body {
 }
 
 #en_tete {
-  width: 775px;
+  width: 1024px;
   height: 100px;
   background-color: rgb(169, 182, 209);
   margin-bottom: 10px;
