@@ -1,7 +1,8 @@
 <?php
+session_start();
 require("./layout/htmlHead.php");
 require("./utils/constants.php");
-session_start();
+require("./utils/calculs.php");
 echo htmlHead("Formulaire d'ajout", "style");
 ?>
     <body>
@@ -73,9 +74,10 @@ echo htmlHead("Formulaire d'ajout", "style");
                                 :unit_price, :rate, :quantity, :total_HT, :total_TTC,
                                 NOW(), NOW());
                     ");
-                    $totalHT = $dataProduct["unit_price"] * $fillProducts[$i]["quantity"];
+                    $totals = getTotalsOnLine($dataProduct["unit_price"], $dataProduct["rate"], $fillProducts[$i]["quantity"]);
+                    $totalHT = $totals["total_HT"];
+                    $totalTTC = $totals["total_TTC"];
                     $orderTotalHT += $totalHT;
-                    $totalTTC = $totalHT * (1 + $dataProduct["rate"]/100);
                     $orderTotalTTC += $totalTTC;
                     $order->execute([
                         "order_id" => $orderId,
