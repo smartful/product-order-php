@@ -2,7 +2,7 @@
 require("./layout/htmlHead.php");
 session_start();
 echo htmlHead("Lignes d'une Commande", "style");
-$orderId = htmlspecialchars($_GET["id"]);
+$orderId = intval($_GET["id"]);
 ?>
     <body>
     <?php include("./layout/header.php"); ?>
@@ -54,12 +54,12 @@ $orderId = htmlspecialchars($_GET["id"]);
                             <td><?= $data[$i]["total_HT"]; ?> €</td>
                             <td><?= $data[$i]["total_TTC"]; ?> €</td>
                             <td style="text-align:center;">
-                                <a href="updateOrderLines.php?id=<?= $data[$i]["id"]; ?>">
+                                <a href="updateOrderLine.php?id=<?= $data[$i]["id"]; ?>">
                                     <img src="./images/modifier.png" />
                                 </a>
                             </td>
                             <td style="text-align:center;">
-                                <a href="deleteOrderLines.php?id=<?= $data[$i]["id"]; ?>">
+                                <a href="deleteOrderLine.php?id=<?= $data[$i]["id"]; ?>&order_id=<?= $orderId; ?>">
                                     <img src="./images/supprimer.png" />
                                 </a>
                             </td>

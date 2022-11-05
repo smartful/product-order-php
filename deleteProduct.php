@@ -19,7 +19,7 @@ echo htmlHead("Confirmation de suppression", "style");
             SELECT id, reference, designation, unit_price, rate FROM products
             WHERE id = :product_id;
         ");
-        $id = htmlspecialchars($_GET["id"]);
+        $id = intval($_GET["id"]);
         $products->execute([
             "product_id"=> $id,
         ]);

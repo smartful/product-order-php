@@ -2,7 +2,7 @@
 require("./layout/htmlHead.php");
 session_start();
 echo htmlHead("Formulaire de modification", "style");
-$lineOrderId = htmlspecialchars($_GET["id"]);
+$lineOrderId = intval($_GET["id"]);
 ?>
     <body>
         <?php include("./layout/header.php"); ?>
