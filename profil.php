@@ -13,7 +13,7 @@ echo htmlHead("Profil", "style");
     <div id="corps">
         <table >
             <tr>
-                <td><a href="modif_main.php">Changer mes informations</a></td>
+                <td>Mes informations</td>
                 <td>    </td>
                 <td>    </td>
             </tr>
@@ -36,11 +36,11 @@ echo htmlHead("Profil", "style");
 
         <br/><br/><br/><br/>
 
-        <a href="change_password.php?id_user=<?php echo $_SESSION['id']?>">Changer de mot de passe</a>
+        <!-- <a href="change_password.php?id_user=<?php echo $_SESSION['id']?>">Changer de mot de passe</a> -->
 
         <br/><br/><br/><br/>
 
-        <a href="erase.php?id=<?php echo $_SESSION['id']?>">Supprimer votre compte</a>
+        <!-- <a href="erase.php?id=<?php echo $_SESSION['id']?>">Supprimer votre compte</a> -->
     </div>
     <?php include("./layout/footer.php"); ?>
     </body>
