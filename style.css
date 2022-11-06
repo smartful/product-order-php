@@ -81,6 +81,11 @@ td {
   padding: 4px;
 }
 
+thead,
+tfoot {
+  background-color: rgb(50, 50, 50);
+}
+
 .button {
   width: 95px;
   height: 35px;

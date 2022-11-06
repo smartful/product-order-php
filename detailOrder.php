@@ -18,8 +18,10 @@ $orderId = intval($_GET["id"]);
             // On se connecte au la SGBD Mysql
             include("./utils/connexion_db.php");
 
+            // Récupérer les lignes de commandes
             $orderLines = $bdd->prepare("
-                SELECT id, reference, designation, unit_price, rate, quantity, total_HT, total_TTC FROM order_lines
+                SELECT id, reference, designation, unit_price, rate, quantity, total_HT, total_TTC
+                FROM order_lines
                 WHERE order_id = :order_id
                 AND deleted = 0;
             ");
@@ -27,6 +29,14 @@ $orderId = intval($_GET["id"]);
                 "order_id"=> $orderId,
             ]);
             $data = $orderLines->fetchAll();
+
+            // Calculer le Total HT et le Total TTC
+            $totalHT = 0;
+            $totalTTC = 0;
+            for ($i=0; $i < count($data); $i++) {
+                $totalHT += $data[$i]["total_HT"];
+                $totalTTC += $data[$i]["total_TTC"];
+            }
             ?>
 
             <table>
@@ -44,7 +54,7 @@ $orderId = intval($_GET["id"]);
                     </tr>
                 </thead>
                 <tbody>
-                    <?php for($i=0; $i<count($data); $i++) :?>
+                    <?php for ($i=0; $i < count($data); $i++) :?>
                         <tr>
                             <td><?= $data[$i]["reference"]; ?></td>
                             <td><?= $data[$i]["designation"]; ?></td>
@@ -66,6 +76,19 @@ $orderId = intval($_GET["id"]);
                         </tr>
                     <?php endfor;?>
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><?= $totalHT; ?> €</td>
+                        <td><?= $totalTTC; ?> €</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tfoot>
             </table>
     </div>
     <?php include("./layout/footer.php"); ?>

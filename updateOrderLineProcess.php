@@ -99,6 +99,14 @@ echo htmlHead("Formulaire de modification", "style");
                 ]);
 
                 $displayText .= "Modification de la ligne de commande validé <br/><br/>";
+                $displayText .= "-----------------------------<br/>";
+                $displayText .= "Produit : [".$dataProduct["reference"]."] ".$dataProduct["designation"]."<br/>";
+                $displayText .= "Prix unitaire : ".$dataProduct["unit_price"]." €<br/>";
+                $displayText .= "Quantité : ".$quantity." €<br/>";
+                $displayText .= "Taux TVA : ".$dataProduct["rate"]." %<br/>";
+                $displayText .= "total HT : ".$totalHT." €<br/>";
+                $displayText .= "total TTC : ".$totalTTC." €<br/>";
+                $displayText .= "-----------------------------<br/><br/>";
                 $displayText .= "L'impact sur la commande à bien été pris en compte<br/><br/>";
                 $displayText .= "-----------------------------<br/>";
                 $displayText .= "Numéro de commande : ".$orderId."<br/>";
