@@ -13,11 +13,12 @@ echo htmlHead("Suppression d'un produit", "style");
         <div id="corps">
             <h1>Traitement de la suppression d'un produit</h1>
             <?php
-            if (empty($_POST['id_product'])) {
-                echo "Aucun identifiant produit n'est identifié<br/>";
-                echo "Veillez, s'il vous plait, réessayer : <a href='deleteProduct.php'>Page de suppression d'un produit</a>";
+            $displayText = "";
+            if (empty($_POST['product_id'])) {
+                $displayText .= "Aucun identifiant produit n'est identifié<br/>";
+                $displayText .= "Veillez, s'il vous plait, réessayer : <a href='productList.php'>Page des produits</a>";
             } else {
-                $idProduct = intval($_POST['id_product']);
+                $productId = intval($_POST['product_id']);
 
                 // On se connecte au la SGBD Mysql
                 include("./utils/connexion_db.php");
@@ -25,15 +26,17 @@ echo htmlHead("Suppression d'un produit", "style");
                 $product = $bdd->prepare("
                     UPDATE products
                     SET deleted = 1, delete_date = NOW()
-                    WHERE id = :id_product;
+                    WHERE id = :product_id;
                 ");
                 $product->execute([
-                    "id_product"=> $idProduct
+                    "product_id"=> $productId
                 ]);
 
-                echo "Suppression du produit validé <br/><br/>";
-                echo "La <a href='productList.php'>page des produits</a>.<br/><br/>";
+                $displayText .= "Suppression du produit validé <br/><br/>";
+                $displayText .= "La <a href='productList.php'>page des produits</a>.<br/><br/>";
             }
+
+            echo $displayText;
             ?>
         </div>
         <?php include("./layout/footer.php"); ?>
