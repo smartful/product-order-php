@@ -48,7 +48,7 @@ echo htmlHead("Produits", "style");
                         <tr>
                             <td><?= $data[$i]["reference"]; ?></td>
                             <td><?= $data[$i]["designation"]; ?></td>
-                            <td><?= $data[$i]["unit_price"]; ?> €</td>
+                            <td><?= round($data[$i]["unit_price"], 2); ?> €</td>
                             <td><?= $data[$i]["rate"]; ?> %</td>
                             <td style="text-align:center;">
                                 <a href="updateProduct.php?id=<?= $data[$i]["id"]; ?>">

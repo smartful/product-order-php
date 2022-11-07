@@ -58,11 +58,11 @@ $orderId = intval($_GET["id"]);
                         <tr>
                             <td><?= $data[$i]["reference"]; ?></td>
                             <td><?= $data[$i]["designation"]; ?></td>
-                            <td><?= $data[$i]["unit_price"]; ?> €</td>
+                            <td><?= round($data[$i]["unit_price"], 2); ?> €</td>
                             <td><?= $data[$i]["quantity"]; ?></td>
                             <td><?= $data[$i]["rate"]; ?> %</td>
-                            <td><?= $data[$i]["total_HT"]; ?> €</td>
-                            <td><?= $data[$i]["total_TTC"]; ?> €</td>
+                            <td><?= round($data[$i]["total_HT"], 2); ?> €</td>
+                            <td><?= round($data[$i]["total_TTC"], 2); ?> €</td>
                             <td style="text-align:center;">
                                 <a href="updateOrderLine.php?id=<?= $data[$i]["id"]; ?>">
                                     <img src="./images/modifier.png" />
@@ -83,8 +83,8 @@ $orderId = intval($_GET["id"]);
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td><?= $totalHT; ?> €</td>
-                        <td><?= $totalTTC; ?> €</td>
+                        <td><?= round($totalHT, 2); ?> €</td>
+                        <td><?= round($totalTTC, 2); ?> €</td>
                         <td></td>
                         <td></td>
                     </tr>

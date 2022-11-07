@@ -46,8 +46,8 @@ echo htmlHead("Commandes", "style");
                     <?php for($i=0; $i<count($data); $i++) :?>
                         <tr>
                             <td><?= $data[$i]["id"]; ?></td>
-                            <td><?= $data[$i]["total_HT"]; ?> €</td>
-                            <td><?= $data[$i]["total_TTC"]; ?> €</td>
+                            <td><?= round($data[$i]["total_HT"], 2); ?> €</td>
+                            <td><?= round($data[$i]["total_TTC"], 2); ?> €</td>
                             <td style="text-align:center;">
                                 <a href="detailOrder.php?id=<?= $data[$i]["id"]; ?>">
                                     <img src="./images/details.png" />
