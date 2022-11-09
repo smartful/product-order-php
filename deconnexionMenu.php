@@ -4,7 +4,7 @@
      <ul>
         <li><a href="home.php">Home</a></li>
         <li><a href="profil.php">Profil</a></li>
-        <li><a href="deconnexion.php">Deconnexion</a></li>
+        <li><a href="deconnexion.php"  class="deconnexion_btn">Deconnexion</a></li>
      </ul>
    </div>
 </div>

@@ -1,19 +1,37 @@
 <?php
-require("./layout/htmlHead.php");
+require("../layout/htmlHead.php");
 session_start();
-echo htmlHead("Confirmation de suppression", "style");
+echo htmlHead("Confirmation de suppression", "../style");
 ?>
     <body>
-        <?php include("./layout/header.php"); ?>
-        <?php include("deconnexionMenu.php"); ?>
+        <?php include("../layout/header.php"); ?>
+        <!-- le menu principal -->
+        <div id="menu">
+            <div class="element_menu">
+                <h3>Product Order</h3>
+                <ul>
+                    <li><a href="../home.php">Home</a></li>
+                    <li><a href="../profil.php">Profil</a></li>
+                    <li><a href="../deconnexion.php" class="deconnexion_btn">Deconnexion</a></li>
+                </ul>
+            </div>
+        </div>
 
         <!-- le menu des activités -->
-        <?php include("themesMenu.php"); ?>
+        <div id="menu_right">
+            <div class="element_menu">
+                <h3>Activités</h3>
+                <ul>
+                    <li><a href="productList.php">Produits</a></li>
+                    <li><a href="../orderList.php">Commandes</a></li>
+                </ul>
+            </div>
+        </div>
 
         <!-- On charge le produit -->
         <?php
         //On se connecte au la SGBD Mysql
-        include("./utils/connexion_db.php");
+        include("../utils/connexion_db.php");
 
         $products = $bdd->prepare("
             SELECT id, reference, designation, unit_price, rate FROM products
@@ -43,12 +61,12 @@ echo htmlHead("Confirmation de suppression", "style");
                     <td><?= $data["designation"]; ?></td>
                 </tr>
                 <tr>
-                    <td><label for="unit_price">Prix unitaire (en € HT)</label> </td>
-                    <td><?= $data["unit_price"]; ?></td>
+                    <td><label for="unit_price">Prix unitaire (HT)</label> </td>
+                    <td><?= round($data["unit_price"], 2); ?> €</td>
                 </tr>
                 <tr>
-                    <td><label for="rate">Taux TVA (en %)</label> </td>
-                    <td><?= $data["rate"]; ?></td>
+                    <td><label for="rate">Taux TVA</label> </td>
+                    <td><?= $data["rate"]; ?> %</td>
                 </tr>
             </table>
 
@@ -58,6 +76,6 @@ echo htmlHead("Confirmation de suppression", "style");
                 <input type="submit" value="Oui" class="button deleteButton"/>
             </form>
         </div>
-        <?php include("./layout/footer.php"); ?>
+        <?php include("../layout/footer.php"); ?>
     </body>
 </html>

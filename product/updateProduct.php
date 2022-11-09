@@ -1,19 +1,37 @@
 <?php
-require("./layout/htmlHead.php");
+require("../layout/htmlHead.php");
 session_start();
-echo htmlHead("Formulaire de modification", "style");
+echo htmlHead("Formulaire de modification", "../style");
 ?>
     <body>
-        <?php include("./layout/header.php"); ?>
-        <?php include("deconnexionMenu.php"); ?>
+        <?php include("../layout/header.php"); ?>
+        <!-- le menu principal -->
+        <div id="menu">
+            <div class="element_menu">
+                <h3>Product Order</h3>
+                <ul>
+                    <li><a href="../home.php">Home</a></li>
+                    <li><a href="../profil.php">Profil</a></li>
+                    <li><a href="../deconnexion.php" class="deconnexion_btn">Deconnexion</a></li>
+                </ul>
+            </div>
+        </div>
 
         <!-- le menu des activités -->
-        <?php include("themesMenu.php"); ?>
+        <div id="menu_right">
+            <div class="element_menu">
+                <h3>Activités</h3>
+                <ul>
+                    <li><a href="productList.php">Produits</a></li>
+                    <li><a href="../orderList.php">Commandes</a></li>
+                </ul>
+            </div>
+        </div>
 
         <!-- On charge le produit -->
         <?php
         //On se connecte au la SGBD Mysql
-        include("./utils/connexion_db.php");
+        include("../utils/connexion_db.php");
 
         $product = $bdd->prepare("
             SELECT id, reference, designation, unit_price, rate FROM products
@@ -56,6 +74,6 @@ echo htmlHead("Formulaire de modification", "style");
                 </p>
             </form>
         </div>
-        <?php include("./layout/footer.php"); ?>
+        <?php include("../layout/footer.php"); ?>
     </body>
 </html>

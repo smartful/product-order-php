@@ -1,14 +1,31 @@
 <?php
-require("./layout/htmlHead.php");
+require("../layout/htmlHead.php");
 session_start();
-echo htmlHead("Produits", "style");
+echo htmlHead("Produits", "../style");
 ?>
     <body>
-        <?php include("./layout/header.php"); ?>
-        <?php include("deconnexionMenu.php"); ?>
+        <?php include("../layout/header.php"); ?>
+        <!-- le menu principal -->
+        <div id="menu">
+            <div class="element_menu">
+                <h3>Product Order</h3>
+                <ul>
+                    <li><a href="../home.php">Home</a></li>
+                    <li><a href="../profil.php">Profil</a></li>
+                    <li><a href="../deconnexion.php" class="deconnexion_btn">Deconnexion</a></li>
+                </ul>
+            </div>
+        </div>
 
         <!-- le menu des activités -->
-        <?php include("themesMenu.php"); ?>
+        <div id="menu_right">
+            <div class="element_menu">
+                <h3>Activités</h3>
+                <ul>
+                    <li><a href="../orderList.php">Commandes</a></li>
+                </ul>
+            </div>
+        </div>
 
         <div id="corps">
             <h1>Produit</h1>
@@ -19,7 +36,7 @@ echo htmlHead("Produits", "style");
             <h2>Liste des produits</h2>
             <?php
             // On se connecte au la SGBD Mysql
-            include("./utils/connexion_db.php");
+            include("../utils/connexion_db.php");
 
             $products = $bdd->prepare("
                 SELECT id, reference, designation, unit_price, rate FROM products
@@ -52,12 +69,12 @@ echo htmlHead("Produits", "style");
                             <td><?= $data[$i]["rate"]; ?> %</td>
                             <td style="text-align:center;">
                                 <a href="updateProduct.php?id=<?= $data[$i]["id"]; ?>">
-                                    <img src="./images/modifier.png" />
+                                    <img src="../images/modifier.png" />
                                 </a>
                             </td>
                             <td style="text-align:center;">
                                 <a href="deleteProduct.php?id=<?= $data[$i]["id"]; ?>">
-                                    <img src="./images/supprimer.png" />
+                                    <img src="../images/supprimer.png" />
                                 </a>
                             </td>
                         </tr>
@@ -65,6 +82,6 @@ echo htmlHead("Produits", "style");
                 </tbody>
             </table>
         </div>
-        <?php include("./layout/footer.php"); ?>
+        <?php include("../layout/footer.php"); ?>
     </body>
 </html>

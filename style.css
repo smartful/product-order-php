@@ -105,6 +105,10 @@ tfoot {
   background-color: rgb(255, 110, 110);
 }
 
+.deconnexion_btn {
+  color: rgb(255, 110, 110);
+}
+
 .auteur_titre_non_lu {
   background-color: rgb(255, 110, 110);
 }
