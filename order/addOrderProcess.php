@@ -1,16 +1,34 @@
 <?php
 session_start();
-require("./layout/htmlHead.php");
-require("./utils/constants.php");
-require("./utils/calculs.php");
-echo htmlHead("Formulaire d'ajout", "style");
+require("../layout/htmlHead.php");
+require("../utils/constants.php");
+require("../utils/calculs.php");
+echo htmlHead("Formulaire d'ajout", "../style");
 ?>
     <body>
-        <?php include("./layout/header.php"); ?>
-        <?php include("deconnexionMenu.php"); ?>
+        <?php include("../layout/header.php"); ?>
+        <!-- le menu principal -->
+        <div id="menu">
+            <div class="element_menu">
+                <h3>Product Order</h3>
+                <ul>
+                    <li><a href="../home.php">Home</a></li>
+                    <li><a href="../profil.php">Profil</a></li>
+                    <li><a href="../deconnexion.php" class="deconnexion_btn">Deconnexion</a></li>
+                </ul>
+            </div>
+        </div>
 
         <!-- le menu des activités -->
-        <?php include("themesMenu.php"); ?>
+        <div id="menu_right">
+            <div class="element_menu">
+                <h3>Activités</h3>
+                <ul>
+                    <li><a href="../product/productList.php">Produits</a></li>
+                    <li><a href="orderList.php">Commandes</a></li>
+                </ul>
+            </div>
+        </div>
 
         <div id="corps">
             <h1>Traitement de l'ajout d'une commande</h1>
@@ -35,7 +53,7 @@ echo htmlHead("Formulaire d'ajout", "style");
                 }
 
                 // On se connecte au la SGBD Mysql
-                include("./utils/connexion_db.php");
+                include("../utils/connexion_db.php");
 
                 // On crée la commande
                 $order = $bdd->prepare("
@@ -94,10 +112,10 @@ echo htmlHead("Formulaire d'ajout", "style");
 
                     $displayText .= "- <strong>[".$dataProduct["reference"]."] : ".$dataProduct["designation"]."</strong><br/>";
                     $displayText .= "quantité : ".$fillProducts[$i]["quantity"]."<br/>";
-                    $displayText .= "prix unitaire : ".$dataProduct["unit_price"]."€<br/>";
+                    $displayText .= "prix unitaire : ".round($dataProduct["unit_price"], 2)."€<br/>";
                     $displayText .= "tva : ".$dataProduct["rate"]." %<br/>";
-                    $displayText .= "total HT : ".$totalHT." €<br/>";
-                    $displayText .= "total TTC : ".$totalTTC." €<br/><br/>";
+                    $displayText .= "total HT : ".round($totalHT, 2)." €<br/>";
+                    $displayText .= "total TTC : ".round($totalTTC, 2)." €<br/><br/>";
                 }
 
                 // On renseigne le total_HT et total_TTC de la commande
@@ -114,8 +132,8 @@ echo htmlHead("Formulaire d'ajout", "style");
                 $displayText .= "Finalisation de la commande :<br/>";
                 $displayText .= "-----------------------------<br/>";
                 $displayText .= "Numéro de commande : ".$orderId."<br/>";
-                $displayText .= "total HT : ".$orderTotalHT." €<br/>";
-                $displayText .= "total TTC : ".$orderTotalTTC." €<br/>";
+                $displayText .= "total HT : ".round($orderTotalHT, 2)." €<br/>";
+                $displayText .= "total TTC : ".round($orderTotalTTC, 2)." €<br/>";
                 $displayText .= "-----------------------------<br/><br/>";
                 $displayText .= "Vous pouvez voir l'ajout sur la <a href='orderList.php'>page des commandes</a>.<br/><br/>";
             }
@@ -123,6 +141,6 @@ echo htmlHead("Formulaire d'ajout", "style");
             echo $displayText;
             ?>
         </div>
-        <?php include("./layout/footer.php"); ?>
+        <?php include("../layout/footer.php"); ?>
     </body>
 </html>

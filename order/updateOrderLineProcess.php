@@ -1,15 +1,33 @@
 <?php
 session_start();
-require("./layout/htmlHead.php");
-require("./utils/calculs.php");
-echo htmlHead("Formulaire de modification", "style");
+require("../layout/htmlHead.php");
+require("../utils/calculs.php");
+echo htmlHead("Formulaire de modification", "../style");
 ?>
     <body>
-        <?php include("./layout/header.php"); ?>
-        <?php include("deconnexionMenu.php"); ?>
+        <?php include("../layout/header.php"); ?>
+        <!-- le menu principal -->
+        <div id="menu">
+            <div class="element_menu">
+                <h3>Product Order</h3>
+                <ul>
+                    <li><a href="../home.php">Home</a></li>
+                    <li><a href="../profil.php">Profil</a></li>
+                    <li><a href="../deconnexion.php" class="deconnexion_btn">Deconnexion</a></li>
+                </ul>
+            </div>
+        </div>
 
         <!-- le menu des activités -->
-        <?php include("themesMenu.php"); ?>
+        <div id="menu_right">
+            <div class="element_menu">
+                <h3>Activités</h3>
+                <ul>
+                    <li><a href="../product/productList.php">Produits</a></li>
+                    <li><a href="orderList.php">Commandes</a></li>
+                </ul>
+            </div>
+        </div>
 
         <div id="corps">
             <h1>Traitement de la modification d'une ligne de commande</h1>
@@ -17,7 +35,7 @@ echo htmlHead("Formulaire de modification", "style");
             $displayText = "";
             if (empty($_POST['product_id']) AND empty($_POST['quantity'])) {
                 $displayText .= "Vous n'avez pas saisie toutes les informations nécessaires<br/>";
-                $displayText .= "Veillez, s'il vous plait, réessayer : <a href='addProduct.php'>Formulaire d'ajout d'un produit</a>";
+                $displayText .= "Veillez, s'il vous plait, réessayer : <a href='../product/addProduct.php'>Formulaire d'ajout d'un produit</a>";
             } else {
                 $orderId = intval($_POST['order_id']);
                 $lineOrderId = intval($_POST['line_order_id']);
@@ -25,7 +43,7 @@ echo htmlHead("Formulaire de modification", "style");
                 $quantity = intval($_POST['quantity']);
 
                 // On se connecte au la SGBD Mysql
-                include("./utils/connexion_db.php");
+                include("../utils/connexion_db.php");
 
                 // On charge le produit
                 $product = $bdd->prepare("
@@ -101,17 +119,17 @@ echo htmlHead("Formulaire de modification", "style");
                 $displayText .= "Modification de la ligne de commande validé <br/><br/>";
                 $displayText .= "-----------------------------<br/>";
                 $displayText .= "Produit : [".$dataProduct["reference"]."] ".$dataProduct["designation"]."<br/>";
-                $displayText .= "Prix unitaire : ".$dataProduct["unit_price"]." €<br/>";
+                $displayText .= "Prix unitaire : ".round($dataProduct["unit_price"], 2)." €<br/>";
                 $displayText .= "Quantité : ".$quantity." €<br/>";
                 $displayText .= "Taux TVA : ".$dataProduct["rate"]." %<br/>";
-                $displayText .= "total HT : ".$totalHT." €<br/>";
-                $displayText .= "total TTC : ".$totalTTC." €<br/>";
+                $displayText .= "total HT : ".round($totalHT, 2)." €<br/>";
+                $displayText .= "total TTC : ".round($totalTTC, 2)." €<br/>";
                 $displayText .= "-----------------------------<br/><br/>";
                 $displayText .= "L'impact sur la commande à bien été pris en compte<br/><br/>";
                 $displayText .= "-----------------------------<br/>";
                 $displayText .= "Numéro de commande : ".$orderId."<br/>";
-                $displayText .= "total HT : ".$orderTotalHT." €<br/>";
-                $displayText .= "total TTC : ".$orderTotalTTC." €<br/>";
+                $displayText .= "total HT : ".round($orderTotalHT, 2)." €<br/>";
+                $displayText .= "total TTC : ".round($orderTotalTTC, 2)." €<br/>";
                 $displayText .= "-----------------------------<br/><br/>";
                 $displayText .= "Vous pouvez voir l'ajout sur la <a href='detailOrder.php?id=".$orderId."'>page de la commande n°".$orderId."</a>.<br/><br/>";
             }
@@ -119,6 +137,6 @@ echo htmlHead("Formulaire de modification", "style");
             echo $displayText;
             ?>
         </div>
-        <?php include("./layout/footer.php"); ?>
+        <?php include("../layout/footer.php"); ?>
     </body>
 </html>

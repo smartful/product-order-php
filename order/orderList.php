@@ -1,14 +1,31 @@
 <?php
-require("./layout/htmlHead.php");
+require("../layout/htmlHead.php");
 session_start();
-echo htmlHead("Commandes", "style");
+echo htmlHead("Commandes", "../style");
 ?>
     <body>
-    <?php include("./layout/header.php"); ?>
-    <?php include("deconnexionMenu.php"); ?>
+    <?php include("../layout/header.php"); ?>
+    <!-- le menu principal -->
+    <div id="menu">
+        <div class="element_menu">
+            <h3>Product Order</h3>
+            <ul>
+                <li><a href="../home.php">Home</a></li>
+                <li><a href="../profil.php">Profil</a></li>
+                <li><a href="../deconnexion.php" class="deconnexion_btn">Deconnexion</a></li>
+            </ul>
+        </div>
+    </div>
 
     <!-- le menu des activités -->
-    <?php include("themesMenu.php"); ?>
+    <div id="menu_right">
+        <div class="element_menu">
+            <h3>Activités</h3>
+            <ul>
+                <li><a href="../product/productList.php">Produits</a></li>
+            </ul>
+        </div>
+    </div>
 
     <div id="corps">
         <h1>Commandes</h1>
@@ -19,7 +36,7 @@ echo htmlHead("Commandes", "style");
         <h2>Liste des commandes</h2>
         <?php
             // On se connecte au la SGBD Mysql
-            include("./utils/connexion_db.php");
+            include("../utils/connexion_db.php");
 
             $orders = $bdd->prepare("
                 SELECT id, total_HT, total_TTC FROM orders
@@ -50,12 +67,12 @@ echo htmlHead("Commandes", "style");
                             <td><?= round($data[$i]["total_TTC"], 2); ?> €</td>
                             <td style="text-align:center;">
                                 <a href="detailOrder.php?id=<?= $data[$i]["id"]; ?>">
-                                    <img src="./images/details.png" />
+                                    <img src="../images/details.png" />
                                 </a>
                             </td>
                             <td style="text-align:center;">
                                 <a href="deleteOrder.php?id=<?= $data[$i]["id"]; ?>">
-                                    <img src="./images/supprimer.png" />
+                                    <img src="../images/supprimer.png" />
                                 </a>
                             </td>
                         </tr>
@@ -63,6 +80,6 @@ echo htmlHead("Commandes", "style");
                 </tbody>
             </table>
     </div>
-    <?php include("./layout/footer.php"); ?>
+    <?php include("../layout/footer.php"); ?>
     </body>
 </html>
