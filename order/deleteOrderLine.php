@@ -88,7 +88,7 @@ $idOrderLine = intval($_GET["id"]);
                 <input type="hidden" name="line_order_id" value="<?= $data["id"]; ?>"/>
                 <input type="hidden" name="order_id" value="<?= $orderId; ?>"/>
                 <button class="button"><a href="detailOrder.php?id=<?= $orderId; ?>">Annuler</a></button>
-                <input type="submit" value="Oui" class="button deleteButton"/>
+                <input type="submit" value="Oui" class="button actionButton"/>
             </form>
         </div>
         <?php include("../layout/footer.php"); ?>

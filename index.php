@@ -7,9 +7,9 @@ echo htmlHead("Product Order", "style");
         <?php include("menu.php"); ?>
 
         <div id="corps">
+            <h1>Bienvenue chez Product Order</h1>
             <p>
-                Bienvenue chez Product Order. <br/>
-                Vous pouvez vous inscrire
+                Si vous avez déjà un compte, vous pouvez saisir vos accès :
             </p>
 
             <form method="post" action="loginProcess.php">
@@ -30,6 +30,13 @@ echo htmlHead("Product Order", "style");
                     <input type="submit" value="Envoyer"/>
                 </p>
             </form>
+
+            <p>
+                Sinon vous pouvez inscrire votre entreprise : <br/>
+                <button class="cta_button actionButton">
+                    <a href="registerForm.php">Inscription</a>
+                </button>
+            </p>
         </div>
         <?php include("./layout/footer.php"); ?>
     </body>

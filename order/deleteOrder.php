@@ -103,7 +103,7 @@ $orderId = intval($_GET["id"]);
             <form method="post" action="deleteOrderProcess.php">
                 <input type="hidden" name="order_id" value="<?= $orderId; ?>"/>
                 <button class="button"><a href="orderList.php">Annuler</a></button>
-                <input type="submit" value="Oui" class="button deleteButton"/>
+                <input type="submit" value="Oui" class="button actionButton"/>
             </form>
         </div>
         <?php include("../layout/footer.php"); ?>

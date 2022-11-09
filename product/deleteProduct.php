@@ -73,7 +73,7 @@ echo htmlHead("Confirmation de suppression", "../style");
             <form method="post" action="deleteProductProcess.php">
                 <input type="hidden" name="product_id" value="<?= $data["id"]; ?>"/>
                 <button class="button"><a href="productList.php">Annuler</a></button>
-                <input type="submit" value="Oui" class="button deleteButton"/>
+                <input type="submit" value="Oui" class="button actionButton"/>
             </form>
         </div>
         <?php include("../layout/footer.php"); ?>

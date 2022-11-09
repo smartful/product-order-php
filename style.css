@@ -97,11 +97,23 @@ tfoot {
   margin: 10px;
 }
 
-.button a {
+.cta_button {
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: black;
+  margin: 10px;
+}
+
+.button a,
+.cta_button a {
   color: black;
 }
 
-.deleteButton {
+.actionButton {
   background-color: rgb(255, 110, 110);
 }
 
