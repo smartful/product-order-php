@@ -10,13 +10,25 @@ echo htmlHead("Product Order", "style");
         <div id="corps">
             <p>
                 <?php
-                if ($_POST['firstname'] != ""
+                $displayText = "";
+                if ($_POST['company_name'] != ""
+                        AND $_POST['siret'] != ""
+                        AND $_POST['address_1'] != ""
+                        AND $_POST['city'] != ""
+                        AND $_POST['firstname'] != ""
                         AND $_POST['lastname'] != ""
+                        AND $_POST['position'] != ""
                         AND $_POST['email'] != ""
                         AND $_POST['pass'] != ""
                         AND $_POST['confirm_pass'] != "") {
+                    $companyName = htmlspecialchars($_POST['company_name']);
+                    $siret = htmlspecialchars($_POST['siret']);
+                    $address1 = htmlspecialchars($_POST['address_1']);
+                    $address2 = isset($_POST['address_2']) ? htmlspecialchars($_POST['address_2']) : "";
+                    $cityPostalCode = htmlspecialchars($_POST['city']);
                     $firstname = htmlspecialchars($_POST['firstname']);
                     $lastname = htmlspecialchars($_POST['lastname']);
+                    $position = htmlspecialchars($_POST['position']);
                     $email = htmlspecialchars($_POST['email']);
                     $pass = htmlspecialchars($_POST['pass']);
                     $confirmPass = htmlspecialchars($_POST['confirm_pass']);
@@ -29,36 +41,54 @@ echo htmlHead("Product Order", "style");
                             // On se connecte au la SGBD Mysql
                             include("./utils/connexion_db.php");
 
-                            // On ajoute les données entrée dans la table membres
-                            $membres = $bdd->prepare("
-                                INSERT INTO users(firstname, lastname, email, password, register_date)
-                                VALUES(:prenom, :nom, :courriel, :pass, NOW());
+                            // On enregistre l'entreprise
+                            $company = $bdd->prepare("
+                                INSERT INTO companies(name, siret, address_1, address_2, postal_code, add_date, update_date)
+                                VALUES(:company_name, :siret, :address_1, :address_2, :postal_code, NOW(), NOW());
                             ");
-                            $membres->execute([
+                            $company->execute([
+                                "company_name"=> $companyName,
+                                "siret"=> $siret,
+                                "address_1"=> $address1,
+                                "address_2"=> $address2,
+                                "postal_code"=> $cityPostalCode,
+                            ]);
+                            $companyId = (int) $bdd->lastInsertId();
+
+                            // On enregistre le user
+                            $user = $bdd->prepare("
+                                INSERT INTO users(firstname, lastname, company_id, position, email, password, register_date)
+                                VALUES(:prenom, :nom, :company_id, :position, :courriel, :pass, NOW());
+                            ");
+                            $user->execute([
                                 "prenom"=> $firstname,
                                 "nom"=> $lastname,
+                                "company_id"=> $companyId,
+                                "position"=> $position,
                                 "courriel"=> $email,
                                 "pass"=> password_hash($pass, PASSWORD_BCRYPT)
                             ]);
                             // On met un lien vers la page perso
-                            echo "Inscription validé <br/><br/>";
-                            echo "Pour continuer veuillez vous rendre sur la page <strong>home</strong>, et vous connecter.<br/><br/>";
-                            echo "Merci !";
+                            $displayText .= "Inscription validé <br/><br/>";
+                            $displayText .= "Pour continuer veuillez vous rendre sur la page <strong>home</strong>, et vous connecter.<br/><br/>";
+                            $displayText .= "Merci !";
                         } else {
-                            echo "Il y a un problème dans les données d'inscription que vous avez saisi ! <br/>";
-                            echo "Il s'agit d'un email au format invalide, ou d'un mot de passe incorrecte. <br/>";
-                            echo "Pour rappel, un mot de passe doit avoir au moins 8 caractères et être composé des caractères suivant : <br/>";
-                            echo "Majuscules, minuscules, chiffres et des caractères spéciaux suivant : <strong>éèùà@&</strong>";
-                            echo "Veillez, s'il vous plait, réessayer : <a href='index.php'>Home</a>";
+                            $displayText .= "Il y a un problème dans les données d'inscription que vous avez saisi ! <br/>";
+                            $displayText .= "Il s'agit d'un email au format invalide, ou d'un mot de passe incorrecte. <br/>";
+                            $displayText .= "Pour rappel, un mot de passe doit avoir au moins 8 caractères et être composé des caractères suivant : <br/>";
+                            $displayText .= "Majuscules, minuscules, chiffres et des caractères spéciaux suivant : <strong>éèùà@&</strong>";
+                            $displayText .= "Veillez, s'il vous plait, réessayer : <a href='index.php'>Home</a>";
                         }
                     } else {
-                        echo 'Votre mot de passe de confirmation est différent de votre mot de passe. <br/>';
-                        echo "Veillez, s'il vous plait, réessayer : <a href='index.php'>Home</a>";
+                        $displayText .= 'Votre mot de passe de confirmation est différent de votre mot de passe. <br/>';
+                        $displayText .= "Veillez, s'il vous plait, réessayer : <a href='index.php'>Home</a>";
                     }
                 } else {
-                    echo "Vous n'avez pas saisie toutes les informations nécessaires<br/>";
-                    echo "Veillez, s'il vous plait, réessayer : <a href='index.php'>Home</a>";
+                    $displayText .= "Vous n'avez pas saisie toutes les informations nécessaires<br/>";
+                    $displayText .= "Veillez, s'il vous plait, réessayer : <a href='index.php'>Home</a>";
                 }
+
+                echo $displayText;
                 ?>
             </p>
         </div>

@@ -16,7 +16,7 @@ $cities = $bdd->query('SELECT * FROM cities ORDER BY name');
                 <h2>Inscription de l'entreprise</h2>
                 <fieldset>
                     <legend>Description Principale</legend>
-                    <table>
+                    <table class="table_form">
                         <tr>
                             <td><label for="company_name">Nom (raison social)</label> </td>
                             <td><input type=text name="company_name" id="company_name"/></td>
@@ -34,9 +34,9 @@ $cities = $bdd->query('SELECT * FROM cities ORDER BY name');
                             <td><input type=text name="address_2" id="address_2"/></td>
                         </tr>
                         <tr>
-                            <td><label for="address_2">Ville</label> </td>
+                            <td><label for="city">Ville</label> </td>
                             <td>
-                                <input list="city" placeholder="Sélectionner la ville ...">
+                                <input name="city" list="city" placeholder="Sélectionner la ville ...">
                                 <datalist  name="city" id="city">
                                     <option value="" selected></option>
                                     <?php while ($dataCity = $cities->fetch()): ?>
@@ -67,8 +67,8 @@ $cities = $bdd->query('SELECT * FROM cities ORDER BY name');
                             <td>
                                 <select name="position" id="position">
                                 <option value="CEO" selected>Gérant</option>
-                                <option value="SALES" selected>Commercial</option>
-                                <option value="CLERK" selected>Employé</option>
+                                <option value="SALES">Commercial</option>
+                                <option value="CLERK">Employé</option>
                                 </select>
                             </td>
                         </tr>

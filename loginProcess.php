@@ -20,7 +20,7 @@ echo htmlHead("Inscription", "style");
 
                 $verif = $bdd->prepare("SELECT password 
                                         FROM users 
-                                        WHERE email= ?") or die (print_r($bdd->errorInfo()));
+                                        WHERE email= ?;") or die (print_r($bdd->errorInfo()));
                 $verif->execute([$email]);
                 $userPass = $verif->fetch();
 
@@ -35,21 +35,35 @@ echo htmlHead("Inscription", "style");
                 header('Location: index.php');
             }
 
-            // On récupère les infos de l'utilisateur
             if ($correctPassword) {
+                // On récupère les infos de l'utilisateur
                 $user = $bdd->prepare("SELECT * 
                                         FROM users 
-                                        WHERE email= :email AND password = :password");
+                                        WHERE email = :email AND password = :password;");
                 $user->execute([
                     "email" => $email,
                     "password" => $userPass['password']
                 ]);
-                $data = $user->fetch();
-                $_SESSION["id"] = $data["id"];
-                $_SESSION["email"] = $data["email"];
-                $_SESSION["firstname"] = $data["firstname"];
-                $_SESSION["lastname"] = $data["lastname"];
+                $dataUser = $user->fetch();
                 $user->closeCursor();
+
+                // On récupère les infos de l'entreprise
+                $company = $bdd->prepare("SELECT *
+                                            FROM companies 
+                                            WHERE id = :user_company_id;");
+                $company->execute([
+                    "user_company_id" => $dataUser["company_id"],
+                ]);
+                $dataCompany = $company->fetch();
+                $company->closeCursor();
+
+                $_SESSION["id"] = $dataUser["id"];
+                $_SESSION["email"] = $dataUser["email"];
+                $_SESSION["firstname"] = $dataUser["firstname"];
+                $_SESSION["lastname"] = $dataUser["lastname"];
+                $_SESSION["position"] = $dataUser["position"];
+                $_SESSION["company_id"] = $dataCompany["id"];
+                $_SESSION["company_name"] = $dataCompany["name"];
                 header("Location: home.php");
             } else {
                 header("Location: index.php");

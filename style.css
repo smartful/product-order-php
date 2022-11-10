@@ -86,6 +86,14 @@ tfoot {
   background-color: rgb(50, 50, 50);
 }
 
+.table_form {
+  width: 80%;
+}
+
+.table_form input {
+  width: 80%;
+}
+
 .button {
   width: 95px;
   height: 35px;
@@ -117,30 +125,10 @@ tfoot {
   background-color: rgb(255, 110, 110);
 }
 
+.validationButton {
+  background-color: rgb(169, 182, 209);
+}
+
 .deconnexion_btn {
   color: rgb(255, 110, 110);
-}
-
-.auteur_titre_non_lu {
-  background-color: rgb(255, 110, 110);
-}
-
-.titre_non_lu {
-  background-color: rgb(255, 150, 150);
-}
-
-.auteur_titre_lu {
-  background-color: rgb(255, 180, 180);
-}
-
-.titre_lu {
-  background-color: rgb(255, 204, 204);
-}
-
-.auteur_agora {
-  background-color: rgb(173, 199, 186);
-}
-
-.message_agora {
-  background-color: rgb(196, 255, 218);
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 09, 2022 at 03:42 AM
+-- Generation Time: Nov 10, 2022 at 02:56 AM
 -- Server version: 5.7.24
 -- PHP Version: 8.1.0
 
@@ -36806,16 +36806,20 @@ CREATE TABLE `companies` (
   `name` varchar(50) NOT NULL,
   `address_1` varchar(100) NOT NULL,
   `address_2` varchar(100) NOT NULL,
-  `city` varchar(100) NOT NULL,
-  `postal_code` int(11) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `phone` varchar(15) NOT NULL,
+  `postal_code` varchar(100) NOT NULL,
   `siret` varchar(14) NOT NULL,
   `add_date` datetime NOT NULL,
   `update_date` datetime NOT NULL,
-  `deleted` tinyint(1) NOT NULL,
-  `delete_date` datetime NOT NULL
+  `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  `delete_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `companies`
+--
+
+INSERT INTO `companies` (`id`, `name`, `address_1`, `address_2`, `postal_code`, `siret`, `add_date`, `update_date`, `deleted`, `delete_date`) VALUES
+(1, 'World Company', '15 avenue des champs Elysée', '', '75008', '12345678912345', '2022-11-10 03:34:34', '2022-11-10 03:34:34', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -36956,7 +36960,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `company_id`, `is_active`, `position`, `firstname`, `lastname`, `email`, `password`, `register_date`) VALUES
-(2, 0, 1, 'CLERK', 'Petit', 'NOUNOURS', 'petit.nounours@gmail.com', '$2y$10$4q6QgY0fkIeD2xAf0IDHM.XW0m5smtjJ7kRgKX02xaxYMn6LZwfRO', '2022-10-23 14:53:35');
+(2, 0, 1, 'CLERK', 'Petit', 'NOUNOURS', 'petit.nounours@gmail.com', '$2y$10$4q6QgY0fkIeD2xAf0IDHM.XW0m5smtjJ7kRgKX02xaxYMn6LZwfRO', '2022-10-23 14:53:35'),
+(3, 1, 1, 'CEO', 'Rémi', 'RODRIGUES', 'remi_rodrigues@hotmail.com', '$2y$10$K5UuJ1Z/eeW7waLJdrUY2uz9uyM1WMhQkcNZ2QiTCBWtKZDGiSg7y', '2022-11-10 03:34:34');
 
 --
 -- Indexes for dumped tables
@@ -37015,7 +37020,7 @@ ALTER TABLE `cities`
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -37039,7 +37044,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

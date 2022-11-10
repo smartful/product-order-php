@@ -15,22 +15,26 @@ echo htmlHead("Profil", "style");
             <tr>
                 <td>Mes informations</td>
                 <td>    </td>
-                <td>    </td>
+            </tr>
+            <tr>
+                <td class="description">Entreprise </td>
+                <td><?= htmlspecialchars($_SESSION['company_name']); ?></td>
             </tr>
             <tr>
                 <td class="description">Prénom </td>
-                <td>    </td>
-                <td><?php echo(htmlspecialchars($_SESSION['firstname'])) ?></td>
+                <td><?= htmlspecialchars($_SESSION['firstname']); ?></td>
             </tr>
             <tr>
                 <td class="description">Nom </td>
-                <td>    </td>
-                <td><?php echo(htmlspecialchars($_SESSION['lastname'])) ?></td>
+                <td><?= htmlspecialchars($_SESSION['lastname']); ?></td>
+            </tr>
+            <tr>
+                <td class="description">Position </td>
+                <td><?= htmlspecialchars($_SESSION['position']); ?></td>
             </tr>
             <tr>
                 <td class="description">E-mail </td>
-                <td>    </td>
-                <td><?php echo(htmlspecialchars($_SESSION['email'])) ?></td>
+                <td><?= htmlspecialchars($_SESSION['email']); ?></td>
             </tr>
         </table>
 

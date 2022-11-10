@@ -27,7 +27,7 @@ echo htmlHead("Product Order", "style");
                     </table>
                 </fieldset>
                 <p>
-                    <input type="submit" value="Envoyer"/>
+                    <input type="submit" value="Envoyer" class="cta_button validationButton"/>
                 </p>
             </form>
 

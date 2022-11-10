@@ -12,8 +12,10 @@ echo htmlHead("Home", "style");
 
     <div id="corps">
         <h1>Product Order</h1>
+        <h2><?= $_SESSION["company_name"]; ?></h2>
         <p>
             Bienvenue <strong><?= $_SESSION["firstname"]; ?> <?= $_SESSION["lastname"]; ?></strong>. <br/>
+            Position : [<?= $_SESSION["position"]; ?>]<br/>
             Vous pouvez créer des produits et des bon de commandes en allant dans les activités.
         </p>
     </div>
