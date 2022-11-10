@@ -3,6 +3,7 @@
         <h3>Activités</h3>
         <ul>
             <li><a href="product/productList.php">Produits</a></li>
+            <li><a href="customer/customerList.php">Clients</a></li>
             <li><a href="order/orderList.php">Commandes</a></li>
         </ul>
     </div>

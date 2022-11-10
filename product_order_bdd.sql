@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 10, 2022 at 02:56 AM
+-- Generation Time: Nov 10, 2022 at 03:41 AM
 -- Server version: 5.7.24
 -- PHP Version: 8.1.0
 
@@ -36824,6 +36824,28 @@ INSERT INTO `companies` (`id`, `name`, `address_1`, `address_2`, `postal_code`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `customers`
+--
+
+CREATE TABLE `customers` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `is_company` tinyint(1) NOT NULL DEFAULT '1',
+  `user_id` int(11) NOT NULL,
+  `address_1` varchar(100) NOT NULL,
+  `address_2` varchar(100) NOT NULL,
+  `postal_code` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `add_date` datetime NOT NULL,
+  `update_date` datetime NOT NULL,
+  `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  `delete_date` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `orders`
 --
 
@@ -36983,6 +37005,12 @@ ALTER TABLE `companies`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `customers`
+--
+ALTER TABLE `customers`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
@@ -37021,6 +37049,12 @@ ALTER TABLE `cities`
 --
 ALTER TABLE `companies`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `customers`
+--
+ALTER TABLE `customers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `orders`
