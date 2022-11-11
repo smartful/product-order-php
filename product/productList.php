@@ -22,6 +22,7 @@ echo htmlHead("Produits", "../style");
             <div class="element_menu">
                 <h3>Activités</h3>
                 <ul>
+                    <li><a href="../customer/customerList.php">Clients</a></li>
                     <li><a href="../order/orderList.php">Commandes</a></li>
                 </ul>
             </div>
@@ -39,12 +40,15 @@ echo htmlHead("Produits", "../style");
             include("../utils/connexion_db.php");
 
             $products = $bdd->prepare("
-                SELECT id, reference, designation, unit_price, rate FROM products
-                WHERE user_id = :user_id
-                AND deleted = 0;
+                SELECT products.id, products.reference, products.designation, products.unit_price, products.rate 
+                FROM products
+                INNER JOIN users ON users.id = products.user_id
+                INNER JOIN companies ON companies.id = users.company_id
+                WHERE users.company_id = :company_id
+                AND products.deleted = 0;
             ");
             $products->execute([
-                "user_id"=> $_SESSION["id"],
+                "company_id"=> $_SESSION["company_id"],
             ]);
             $data = $products->fetchAll();
             ?>

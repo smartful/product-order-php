@@ -23,6 +23,7 @@ echo htmlHead("Suppression d'un produit", "../style");
                 <h3>Activités</h3>
                 <ul>
                     <li><a href="productList.php">Produits</a></li>
+                    <li><a href="../customer/customerList.php">Clients</a></li>
                     <li><a href="../order/orderList.php">Commandes</a></li>
                 </ul>
             </div>
@@ -51,7 +52,7 @@ echo htmlHead("Suppression d'un produit", "../style");
                 ]);
 
                 $displayText .= "Suppression du produit validé <br/><br/>";
-                $displayText .= "La <a href='productList.php'>page des produits</a>.<br/><br/>";
+                $displayText .= "Vous pouvez constatez la suppression sur la <a href='productList.php'>page des produits</a>.<br/><br/>";
             }
 
             echo $displayText;

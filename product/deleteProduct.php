@@ -23,6 +23,7 @@ echo htmlHead("Confirmation de suppression", "../style");
                 <h3>Activités</h3>
                 <ul>
                     <li><a href="productList.php">Produits</a></li>
+                    <li><a href="../customer/customerList.php">Clients</a></li>
                     <li><a href="../order/orderList.php">Commandes</a></li>
                 </ul>
             </div>
@@ -34,47 +35,57 @@ echo htmlHead("Confirmation de suppression", "../style");
         include("../utils/connexion_db.php");
 
         $products = $bdd->prepare("
-            SELECT id, reference, designation, unit_price, rate FROM products
-            WHERE id = :product_id;
+            SELECT products.id, products.reference, products.designation, products.unit_price, products.rate 
+            FROM products
+            INNER JOIN users ON users.id = products.user_id
+            INNER JOIN companies ON companies.id = users.company_id
+            WHERE users.company_id = :company_id
+            AND products.id = :product_id;
         ");
         $id = intval($_GET["id"]);
         $products->execute([
             "product_id"=> $id,
+            "company_id"=> $_SESSION["company_id"],
         ]);
         $data = $products->fetch();
         ?>
 
         <div id="corps">
             <h1>Suppression d'un produit</h1>
-            <p>
-                Êtes vous sur de vouloir <strong>supprimer</strong> le produit suivant ?
-            </p>
+            <?php if ($data == false): ?>
+                <?= "Vous n'êtes pas autorisé à accéder à ce produit ! <br/><br/>"; ?>
+                <?= "Retournez sur la <a href='productList.php'>page des produits</a>.<br/>"; ?>
+            <?php else: ?>
+                <p>
+                    Êtes vous sur de vouloir <strong>supprimer</strong> le produit suivant ?
+                </p>
 
-            <h2>Information du produit</h2>
-            <table>
-                <tr>
-                    <td><label for="reference">Référence</label> </td>
-                    <td><?= $data["reference"]; ?></td>
-                </tr>
-                <tr>
-                    <td><label for="designation">Désignation</label> </td>
-                    <td><?= $data["designation"]; ?></td>
-                </tr>
-                <tr>
-                    <td><label for="unit_price">Prix unitaire (HT)</label> </td>
-                    <td><?= round($data["unit_price"], 2); ?> €</td>
-                </tr>
-                <tr>
-                    <td><label for="rate">Taux TVA</label> </td>
-                    <td><?= $data["rate"]; ?> %</td>
-                </tr>
-            </table>
+                <h2>Information du produit</h2>
+                <table>
+                    <tr>
+                        <td><label for="reference">Référence</label> </td>
+                        <td><?= $data["reference"]; ?></td>
+                    </tr>
+                    <tr>
+                        <td><label for="designation">Désignation</label> </td>
+                        <td><?= $data["designation"]; ?></td>
+                    </tr>
+                    <tr>
+                        <td><label for="unit_price">Prix unitaire (HT)</label> </td>
+                        <td><?= round($data["unit_price"], 2); ?> €</td>
+                    </tr>
+                    <tr>
+                        <td><label for="rate">Taux TVA</label> </td>
+                        <td><?= $data["rate"]; ?> %</td>
+                    </tr>
+                </table>
 
-            <form method="post" action="deleteProductProcess.php">
-                <input type="hidden" name="product_id" value="<?= $data["id"]; ?>"/>
-                <button class="button"><a href="productList.php">Annuler</a></button>
-                <input type="submit" value="Oui" class="button actionButton"/>
-            </form>
+                <form method="post" action="deleteProductProcess.php">
+                    <input type="hidden" name="product_id" value="<?= $data["id"]; ?>"/>
+                    <button class="button"><a href="productList.php">Annuler</a></button>
+                    <input type="submit" value="Oui" class="button actionButton"/>
+                </form>
+            <?php endif; ?>
         </div>
         <?php include("../layout/footer.php"); ?>
     </body>
