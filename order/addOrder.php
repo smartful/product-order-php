@@ -24,6 +24,7 @@ echo htmlHead("Formulaire d'ajout", "../style");
                 <h3>Activités</h3>
                 <ul>
                     <li><a href="../product/productList.php">Produits</a></li>
+                    <li><a href="../customer/customerList.php">Clients</a></li>
                     <li><a href="orderList.php">Commandes</a></li>
                 </ul>
             </div>
@@ -35,10 +36,16 @@ echo htmlHead("Formulaire d'ajout", "../style");
         include("../utils/connexion_db.php");
 
         $products = $bdd->prepare("
-            SELECT id, reference, designation, unit_price, rate FROM products
-            WHERE deleted = 0;
+            SELECT products.id, products.reference, products.designation, products.unit_price, products.rate 
+            FROM products
+            INNER JOIN users ON users.id = products.user_id
+            INNER JOIN companies ON companies.id = users.company_id
+            WHERE users.company_id = :company_id
+            AND products.deleted = 0;
         ");
-        $products->execute();
+        $products->execute([
+            "company_id"=> $_SESSION["company_id"],
+        ]);
         $dataProduct = $products->fetchAll();
         ?>
 

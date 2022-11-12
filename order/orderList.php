@@ -23,6 +23,7 @@ echo htmlHead("Commandes", "../style");
             <h3>Activités</h3>
             <ul>
                 <li><a href="../product/productList.php">Produits</a></li>
+                <li><a href="../customer/customerList.php">Clients</a></li>
             </ul>
         </div>
     </div>
@@ -39,12 +40,15 @@ echo htmlHead("Commandes", "../style");
             include("../utils/connexion_db.php");
 
             $orders = $bdd->prepare("
-                SELECT id, total_HT, total_TTC FROM orders
-                WHERE user_id = :user_id
-                AND deleted = 0;
+                SELECT orders.id, orders.total_HT, orders.total_TTC 
+                FROM orders
+                INNER JOIN users ON users.id = orders.user_id
+                INNER JOIN companies ON companies.id = users.company_id
+                WHERE users.company_id = :company_id
+                AND orders.deleted = 0;
             ");
             $orders->execute([
-                "user_id"=> $_SESSION["id"],
+                "company_id"=> $_SESSION["company_id"],
             ]);
             $data = $orders->fetchAll();
             ?>
