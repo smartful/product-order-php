@@ -3,7 +3,7 @@ require("../layout/htmlHead.php");
 session_start();
 echo htmlHead("Formulaire d'ajout", "../style");
 include("../utils/connexion_db.php");
-$cities = $bdd->query('SELECT * FROM cities ORDER BY name');
+$cities = $bdd->query('SELECT * FROM cities ORDER BY city_name;');
 ?>
     <body>
         <?php include("../layout/header.php"); ?>
@@ -65,8 +65,8 @@ $cities = $bdd->query('SELECT * FROM cities ORDER BY name');
                                 <datalist  name="city" id="city">
                                     <option value="" selected></option>
                                     <?php while ($dataCity = $cities->fetch()): ?>
-                                        <option value=<?= $dataCity['postal_code']; ?>>
-                                            <?= $dataCity['name']; ?>
+                                        <option value=<?= $dataCity['id']; ?>>
+                                            <?= "[".$dataCity['postal_code']."] ".$dataCity['city_name']; ?>
                                         </option>
                                     <?php endwhile; ?>
                                 </datalist>

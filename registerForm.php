@@ -2,7 +2,9 @@
 require("./layout/htmlHead.php");
 echo htmlHead("Inscription", "style");
 include("./utils/connexion_db.php");
-$cities = $bdd->query('SELECT * FROM cities ORDER BY name');
+$cities = $bdd->query('SELECT * FROM cities ORDER BY city_name;');
+$dataCities = $cities->fetchAll();
+$cities->closeCursor();
 ?>
     <body>
         <?php include("./layout/header.php"); ?>
@@ -39,11 +41,11 @@ $cities = $bdd->query('SELECT * FROM cities ORDER BY name');
                                 <input name="city" list="city" placeholder="Sélectionner la ville ...">
                                 <datalist  name="city" id="city">
                                     <option value="" selected></option>
-                                    <?php while ($dataCity = $cities->fetch()): ?>
-                                        <option value=<?= $dataCity['postal_code']; ?>>
-                                            <?= $dataCity['name']; ?>
+                                    <?php for ($i = 0; $i < count($dataCities); $i++): ?>
+                                        <option value=<?= $dataCities[$i]['id']; ?>>
+                                            <?= "[".$dataCities[$i]['postal_code']."] ".$dataCities[$i]['city_name']; ?>
                                         </option>
-                                    <?php endwhile; ?>
+                                    <?php endfor; ?>
                                 </datalist >
                             </td>
                         </tr>

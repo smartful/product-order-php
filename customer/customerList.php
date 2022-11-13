@@ -58,7 +58,7 @@ echo htmlHead("Clients", "../style");
                     <tr>
                         <th>Nom</th>
                         <th>Typologie</th>
-                        <th>Détail</th>
+                        <th>Détails</th>
                         <th>Supprimer</th>
                     </tr>
                 </thead>

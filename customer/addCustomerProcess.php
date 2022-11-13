@@ -47,7 +47,7 @@ echo htmlHead("Formulaire d'ajout", "../style");
                 $isCompany = $_POST['typology'] == "company" ? 1 : 0;
                 $address1 = htmlspecialchars($_POST['address_1']);
                 $address2 = isset($_POST['address_2']) ? htmlspecialchars($_POST['address_2']) : "";
-                $cityPostalCode = htmlspecialchars($_POST['city']);
+                $cityId = intval($_POST['city']);
                 $email = htmlspecialchars($_POST['email']);
                 $phone = htmlspecialchars($_POST['phone']);
 
@@ -55,9 +55,9 @@ echo htmlHead("Formulaire d'ajout", "../style");
                 include("../utils/connexion_db.php");
 
                 $product = $bdd->prepare("
-                    INSERT INTO customers(user_id, name, is_company, address_1, address_2, postal_code, email, 
+                    INSERT INTO customers(user_id, name, is_company, address_1, address_2, city_id, email, 
                                             phone, add_date, update_date)
-                    VALUES(:user_id, :name, :is_Company, :address_1, :address_2, :postal_code, :email, 
+                    VALUES(:user_id, :name, :is_Company, :address_1, :address_2, :city_id, :email, 
                             :phone, NOW(), NOW());
                 ");
                 $product->execute([
@@ -66,7 +66,7 @@ echo htmlHead("Formulaire d'ajout", "../style");
                     "is_Company"=> $isCompany,
                     "address_1"=> $address1,
                     "address_2"=> $address2,
-                    "postal_code"=> $cityPostalCode,
+                    "city_id"=> $cityId,
                     "email"=> $email,
                     "phone"=> $phone,
                 ]);

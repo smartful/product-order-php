@@ -25,7 +25,7 @@ echo htmlHead("Product Order", "style");
                     $siret = htmlspecialchars($_POST['siret']);
                     $address1 = htmlspecialchars($_POST['address_1']);
                     $address2 = isset($_POST['address_2']) ? htmlspecialchars($_POST['address_2']) : "";
-                    $cityPostalCode = htmlspecialchars($_POST['city']);
+                    $cityId = intval($_POST['city']);
                     $firstname = htmlspecialchars($_POST['firstname']);
                     $lastname = htmlspecialchars($_POST['lastname']);
                     $position = htmlspecialchars($_POST['position']);
@@ -43,15 +43,15 @@ echo htmlHead("Product Order", "style");
 
                             // On enregistre l'entreprise
                             $company = $bdd->prepare("
-                                INSERT INTO companies(name, siret, address_1, address_2, postal_code, add_date, update_date)
-                                VALUES(:company_name, :siret, :address_1, :address_2, :postal_code, NOW(), NOW());
+                                INSERT INTO companies(name, siret, address_1, address_2, city_id, add_date, update_date)
+                                VALUES(:company_name, :siret, :address_1, :address_2, :city_id, NOW(), NOW());
                             ");
                             $company->execute([
                                 "company_name"=> $companyName,
                                 "siret"=> $siret,
                                 "address_1"=> $address1,
                                 "address_2"=> $address2,
-                                "postal_code"=> $cityPostalCode,
+                                "city_id"=> $cityId,
                             ]);
                             $companyId = (int) $bdd->lastInsertId();
 
