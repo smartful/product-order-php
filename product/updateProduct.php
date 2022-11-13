@@ -42,7 +42,7 @@ echo htmlHead("Formulaire de modification", "../style");
             WHERE users.company_id = :company_id
             AND products.id = :product_id;
         ");
-        $id = htmlspecialchars($_GET["id"]);
+        $id = intval($_GET["id"]);
         $product->execute([
             "product_id"=> $id,
             "company_id"=> $_SESSION["company_id"],

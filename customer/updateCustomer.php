@@ -1,0 +1,170 @@
+<?php
+require("../layout/htmlHead.php");
+session_start();
+echo htmlHead("Formulaire de modification", "../style");
+// On se connecte au la SGBD Mysql
+include("../utils/connexion_db.php");
+$cities = $bdd->query('SELECT * FROM cities ORDER BY city_name;');
+?>
+    <body>
+        <?php include("../layout/header.php"); ?>
+        <!-- le menu principal -->
+        <div id="menu">
+            <div class="element_menu">
+                <h3>Product Order</h3>
+                <ul>
+                    <li><a href="../home.php">Home</a></li>
+                    <li><a href="../profil.php">Profil</a></li>
+                    <li><a href="../deconnexion.php" class="deconnexion_btn">Deconnexion</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- le menu des activités -->
+        <div id="menu_right">
+            <div class="element_menu">
+                <h3>Activités</h3>
+                <ul>
+                    <li><a href="productList.php">Produits</a></li>
+                    <li><a href="customerList.php">Clients</a></li>
+                    <li><a href="../order/orderList.php">Commandes</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- On charge le produit -->
+        <?php
+
+
+        $customer = $bdd->prepare("
+            SELECT customers.*, cities.*
+            FROM customers
+            LEFT JOIN cities ON cities.id = customers.city_id
+            INNER JOIN users ON users.id = customers.user_id
+            INNER JOIN companies ON companies.id = users.company_id
+            WHERE users.company_id = :company_id
+            AND customers.id = :customer_id;
+        ");
+        $id = intval($_GET["id"]);
+        $customer->execute([
+            "customer_id"=> $id,
+            "company_id"=> $_SESSION["company_id"],
+        ]);
+        $data = $customer->fetch();
+        ?>
+
+        <div id="corps">
+            <h1>Modification d'un client</h1>
+            <?php if ($data == false): ?>
+                <?= "Vous n'êtes pas autorisé à accéder à ce client ! <br/><br/>"; ?>
+                <?= "Retournez sur la <a href='productList.php'>page des clients</a>.<br/>"; ?>
+            <?php else: ?>
+                <form method="post" action="updateProductProcess.php">
+                    <input type="hidden" name="id_product" value="<?= $data["id"]; ?>"/>
+                    <fieldset>
+                        <legend>Information du produit</legend>
+                        <table>
+                            <tr>
+                                <td><label for="reference">Nom</label> </td>
+                                <td>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        id="name"
+                                        size=10
+                                        value="<?= $data["name"]; ?>"
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="designation">Typologie</label> </td>
+                                <td>
+                                    <input
+                                        type="radio"
+                                        id="company"
+                                        name="typology"
+                                        value="company"
+                                        <?= $data["is_company"] ? "checked" : ""; ?>
+                                    >
+                                    <label for="company">Entreprise</label>
+                                    <input
+                                        type="radio"
+                                        id="individual"
+                                        name="typology"
+                                        value="individual"
+                                        <?= $data["is_company"] ? "" : "checked"; ?>
+                                    >
+                                    <label for="individual">Particulier</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="address_1">adresse 1</label> </td>
+                                <td>
+                                    <input
+                                        type="text"
+                                        name="address_1"
+                                        id="address_1"
+                                        value="<?= $data["address_1"]; ?>"
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="address_2">adresse 2</label> </td>
+                                <td>
+                                    <input
+                                        type="text"
+                                        name="address_2"
+                                        id="address_2"
+                                        value="<?= $data["address_2"]; ?>"
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="rate">Ville</label> </td>
+                                <td>
+                                    <input name="city" list="city" placeholder="Sélectionner la ville ...">
+                                    <datalist  name="city" id="city">
+                                        <option value="<?= $data["city_id"]; ?>" selected>
+                                        <?= "[".$data['postal_code']."] ".$data['city_name']; ?>
+                                        </option>
+                                        <?php while ($dataCity = $cities->fetch()): ?>
+                                            <option value=<?= $dataCity['id']; ?>>
+                                                <?= "[".$dataCity['postal_code']."] ".$dataCity['city_name']; ?>
+                                            </option>
+                                        <?php endwhile; ?>
+                                    </datalist>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="email">E-mail</label> </td>
+                                <td>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        id="email"
+                                        value="<?= $data["email"]; ?>"
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="phone">Téléphone</label> </td>
+                                <td>
+                                    <input
+                                        type="phone"
+                                        name="phone"
+                                        id="phone"
+                                        value="<?= $data["phone"]; ?>"
+                                    />
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                    <p>
+                        <input type="submit" value="Envoyer" class="cta_button validationButton"/>
+                    </p>
+                </form>
+            <?php endif; ?>
+        </div>
+        <?php include("../layout/footer.php"); ?>
+    </body>
+</html>

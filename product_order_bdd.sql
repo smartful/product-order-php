@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.2
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Nov 10, 2022 at 03:41 AM
--- Server version: 5.7.24
--- PHP Version: 8.1.0
+-- Hôte : localhost
+-- Généré le : dim. 13 nov. 2022 à 22:49
+-- Version du serveur : 10.4.25-MariaDB
+-- Version de PHP : 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,28 +18,28 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `productorder`
+-- Base de données : `productorder`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cities`
+-- Structure de la table `cities`
 --
 
 CREATE TABLE `cities` (
   `id` mediumint(8) UNSIGNED NOT NULL,
-  `name` varchar(45) DEFAULT NULL,
+  `city_name` varchar(45) DEFAULT NULL,
   `postal_code` varchar(255) DEFAULT NULL,
   `longitude_deg` float DEFAULT NULL,
   `latitude_deg` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `cities`
+-- Déchargement des données de la table `cities`
 --
 
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (1, 'OZAN', '01190', 4.91667, 46.3833),
 (2, 'CORMORANCHE-SUR-SAONE', '01290', 4.83333, 46.2333),
 (3, 'PLAGNE', '01130', 5.73333, 46.1833),
@@ -1140,7 +1140,7 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (1098, 'LESGES', '02220', 3.5, 49.3),
 (1099, 'CRECY-SUR-SERRE', '02270', 3.61667, 49.7),
 (1100, 'LA SELVE', '02150', 4, 49.5667);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (1101, 'NEUVILLE-SAINT-AMAND', '02100', 3.33333, 49.8167),
 (1102, 'BOURESCHES', '02400', 3.3, 49.0667),
 (1103, 'BEAUME', '02500', 4.15, 49.8333),
@@ -2210,7 +2210,7 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (2167, 'USCLADES-ET-RIEUTORD', '07510', 4.15834, 44.7756),
 (2168, 'BOGY', '07340', 4.76667, 45.2833),
 (2169, 'SAINT-CIRGUES-DE-PRADES', '07380', 4.27167, 44.6237);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (2170, 'LE ROUX', '07560', 4.15, 44.7333),
 (2171, 'BIDON', '07700', 4.53333, 44.3667),
 (2172, 'PLANZOLLES', '07230', 4.15, 44.4833),
@@ -3294,7 +3294,7 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (3250, 'VITRY-LE-CROISE', '10110', 4.56667, 48.15),
 (3251, 'AUBETERRE', '10150', 4.11667, 48.4333),
 (3252, 'BERNON', '10130', 3.98333, 47.9833);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (3253, 'DAMPIERRE', '10240', 4.36667, 48.55),
 (3254, 'POLIGNY', '10110', 4.35, 48.1667),
 (3255, 'LEVIGNY', '10200', 4.7, 48.3),
@@ -4353,7 +4353,7 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (4308, 'MOUNES-PROHENCOUX', '12370', 2.78333, 43.8),
 (4309, 'SAINT-SERNIN-SUR-RANCE', '12380', 2.6, 43.8833),
 (4310, 'PRUINES', '12320', 2.5, 44.5333);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (4311, 'ROQUEFORT-SUR-SOULZON', '12250', 2.98333, 43.9833),
 (4312, 'AURELLE-VERLAC', '12130', 2.98333, 44.5333),
 (4313, 'MONTLAUR', '12400', 2.83389, 43.8792),
@@ -5372,7 +5372,7 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (5326, 'RAGEADE', '15500', 3.28333, 45.1),
 (5327, 'GOURDIEGES', '15230', 2.88333, 44.9333),
 (5328, 'ALLEUZE', '15100', 3.1, 44.95);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (5329, 'LAFEUILLADE-EN-VEZIE', '15130', 2.46667, 44.7833),
 (5330, 'BREZONS', '15230', 2.81667, 44.9667),
 (5331, 'CROS-DE-RONESQUE', '15130', 2.61667, 44.8667),
@@ -6420,7 +6420,7 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (6373, 'LA CHAPELOTTE', '18250', 2.58333, 47.35),
 (6374, 'SAINT-AMAND-MONTROND', '18200', 2.50555, 46.7236),
 (6375, 'UZAY-LE-VENON', '18190', 2.46667, 46.8167);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (6376, 'LIGNIERES', '18160', 2.17611, 46.752),
 (6377, 'CHAMBON', '18190', 2.32472, 46.787),
 (6378, 'FAVERDINES', '18360', 2.46667, 46.65),
@@ -7476,7 +7476,7 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (7428, 'FLAVIGNY-SUR-OZERAIN', '21150', 4.53333, 47.5),
 (7429, 'VIEVIGNE', '21310', 5.23333, 47.4333),
 (7430, 'MASSINGY-LES-SEMUR', '21140', 4.4, 47.5167);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (7431, 'MONTIGNY-MORNAY-VILLENEUVE-SUR-VINGEANNE', '21610', 5.43778, 47.5653),
 (7432, 'COUTERNON', '21560', 5.15, 47.3333),
 (7433, 'CORPOYER-LA-CHAPELLE', '21150', 4.61667, 47.5333),
@@ -8527,7 +8527,7 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (8478, 'SAINT-JULIEN-DE-LAMPON', '24370', 1.35, 44.8667),
 (8479, 'VEYRIGNAC', '24370', 1.31667, 44.8333),
 (8480, 'MONTCARET', '24230', 0.066667, 44.85);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (8481, 'SAINT-AMAND-DE-COLY', '24290', 1.26667, 45.0667),
 (8482, 'SAINT-AQUILIN', '24110', 0.5, 45.1833),
 (8483, 'SEGONZAC', '24600', 0.433333, 45.2),
@@ -9579,7 +9579,7 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (9529, 'VALOUSE', '26110', 5.2, 44.4667),
 (9530, 'POMMEROL', '26470', 5.45223, 44.4462),
 (9531, 'EYMEUX', '26730', 5.16667, 45.0833);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (9532, 'LA MOTTE-DE-GALAURE', '26240', 4.91667, 45.2),
 (9533, 'LA CHARCE', '26470', 5.45, 44.4667),
 (9534, 'BEAURIERES', '26310', 5.55, 44.5833),
@@ -10590,7 +10590,7 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (10539, 'CHAPELLE-ROYALE', '28290', 1.05, 48.15),
 (10540, 'OUARVILLE', '28150', 1.76667, 48.35),
 (10541, 'ROUVRAY-SAINT-FLORENTIN', '28150', 1.56667, 48.25);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (10542, 'GARANCIERES-EN-DROUAIS', '28500', 1.28333, 48.7),
 (10543, 'FONTAINE-SIMON', '28240', 1.01667, 48.5),
 (10544, 'VOISE', '28700', 1.71667, 48.4),
@@ -11624,9 +11624,9 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (11572, 'MURET', '31600', 1.35, 43.4667),
 (11573, 'TERREBASSE', '31420', 0.966667, 43.25),
 (11574, 'MONTESQUIEU-LAURAGAIS', '31450', 1.63333, 43.4167),
-(11575, 'DAUX', '31700', 1.25, 43.7),
-(11576, 'LA MAGDELAINE-SUR-TARN', '31340', 1.55, 43.8167);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+(11575, 'DAUX', '31700', 1.25, 43.7);
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+(11576, 'LA MAGDELAINE-SUR-TARN', '31340', 1.55, 43.8167),
 (11577, 'CABANAC-CAZAUX', '31160', 0.75, 43.0333),
 (11578, 'SAINT-LYS', '31470', 1.2, 43.5167),
 (11579, 'AURIN', '31570', 1.66667, 43.5333),
@@ -12675,9 +12675,9 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (12622, 'LUSSAC', '33570', -0.1, 44.95),
 (12623, 'VERTHEUIL', '33180', -0.834167, 45.2503),
 (12624, 'LABARDE', '33460', -0.633333, 45.0167),
-(12625, 'TIZAC-DE-CURTON', '33420', -0.25, 44.8167),
-(12626, 'LAMOTHE-LANDERRON', '33190', 0.066667, 44.55);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+(12625, 'TIZAC-DE-CURTON', '33420', -0.25, 44.8167);
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+(12626, 'LAMOTHE-LANDERRON', '33190', 0.066667, 44.55),
 (12627, 'SAINT-PIERRE-DE-MONS', '33210', -0.216667, 44.55),
 (12628, 'POMPIGNAC', '33370', -0.433333, 44.85),
 (12629, 'FOURS', '33390', -0.633333, 45.1667),
@@ -13695,10 +13695,10 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (13641, 'LA CHAPELLE-DU-LOU', '35360', -2, 48.2167),
 (13642, 'VENDEL', '35140', -1.31667, 48.3),
 (13643, 'ROMILLE', '35850', -1.9, 48.2167),
-(13644, 'CLAYES', '35590', -1.85, 48.1833),
+(13644, 'CLAYES', '35590', -1.85, 48.1833);
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (13645, 'SAINT-BRICE-EN-COGLES', '35460', -1.36667, 48.4),
-(13646, 'PLEURTUIT', '35730', -2.06667, 48.5833);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+(13646, 'PLEURTUIT', '35730', -2.06667, 48.5833),
 (13647, 'PACE', '35740', -1.76667, 48.15),
 (13648, 'LA NOUAYE', '35137', -1.98333, 48.15),
 (13649, 'LE MINIHIC-SUR-RANCE', '35870', -2.01667, 48.5833),
@@ -14724,11 +14724,11 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (14669, 'SAINT-ONDRAS', '38490', 5.53333, 45.5167),
 (14670, 'MARCILLOLES', '38260', 5.18333, 45.3333),
 (14671, 'COUR-ET-BUIS', '38122', 5, 45.4333),
-(14672, 'SAINT-HONORE', '38350', 5.81667, 44.9333),
+(14672, 'SAINT-HONORE', '38350', 5.81667, 44.9333);
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (14673, 'MOIDIEU-DETOURBE', '38440', 5.01667, 45.5167),
 (14674, 'SILLANS', '38590', 5.38333, 45.3333),
-(14675, 'JARDIN', '38200', 4.91667, 45.5);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+(14675, 'JARDIN', '38200', 4.91667, 45.5),
 (14676, 'PONSONNAS', '38350', 5.8, 44.8833),
 (14677, 'CHEYSSIEU', '38550', 4.85, 45.4333),
 (14678, 'LE GRAND-LEMPS', '38690', 5.41667, 45.3833),
@@ -15789,11 +15789,11 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (15733, 'MIMBASTE', '40350', -0.966667, 43.65),
 (15734, 'SAINT-VINCENT-DE-TYROSSE', '40230', -1.3, 43.6667),
 (15735, 'CALLEN', '40430', -0.466667, 44.3),
-(15736, 'SAINT-PAUL-EN-BORN', '40200', 0.847501, 44.2242),
+(15736, 'SAINT-PAUL-EN-BORN', '40200', 0.847501, 44.2242);
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (15737, 'MUR-DE-SOLOGNE', '41230', 1.61667, 47.4167),
 (15738, 'CHAUMONT-SUR-THARONNE', '41600', 1.9, 47.6167),
-(15739, 'MONTRIEUX-EN-SOLOGNE', '41210', 1.73333, 47.55);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+(15739, 'MONTRIEUX-EN-SOLOGNE', '41210', 1.73333, 47.55),
 (15740, 'VILLEROMAIN', '41100', 1.15, 47.7333),
 (15741, 'SAINT-RIMAY', '41800', 0.916667, 47.7667),
 (15742, 'SAINTE-GEMMES', '41290', 1.26667, 47.7833),
@@ -16813,12 +16813,12 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (16756, 'NANTES', '44000-44100-44200-44300', -1.55, 47.2167),
 (16757, 'ROUGE', '44660', -1.45, 47.7833),
 (16758, 'SAINTE-LUCE-SUR-LOIRE', '44980', -1.5, 47.25),
-(16759, 'SAINT-MOLF', '44350', -2.41667, 47.3833),
+(16759, 'SAINT-MOLF', '44350', -2.41667, 47.3833);
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (16760, 'SAINT-AIGNAN-GRANDLIEU', '44860', 0.369445, 47.1239),
 (16761, 'MESANGER', '44522', -1.23333, 47.4333),
 (16762, 'BATZ-SUR-MER', '44740', -2.48333, 47.2833),
-(16763, 'MOISDON-LA-RIVIERE', '44520', -1.36667, 47.6167);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+(16763, 'MOISDON-LA-RIVIERE', '44520', -1.36667, 47.6167),
 (16764, 'CHEIX-EN-RETZ', '44640', -1.81667, 47.1833),
 (16765, 'LE CROISIC', '44490', -2.51667, 47.3),
 (16766, 'REZE', '44400', -1.56667, 47.2),
@@ -17851,13 +17851,13 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (17793, 'MAZIERES-NARESSE', '47210', 0.716667, 44.6667),
 (17794, 'SAINT-MAURIN', '47270', 0.9, 44.2),
 (17795, 'SAINTE-COLOMBE-DE-VILLENEUVE', '47300', 0.65, 44.3667),
-(17796, 'LAPERCHE', '47800', 0.416667, 44.55),
+(17796, 'LAPERCHE', '47800', 0.416667, 44.55);
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (17797, 'MONTETON', '47120', 0.25, 44.6167),
 (17798, 'LAUZUN', '47410', 0.466667, 44.6333),
 (17799, 'ESPIENS', '47600', 0.366667, 44.1667),
 (17800, 'MONSEGUR', '47150', 0.879167, 44.4839),
-(17801, 'BALEYSSAGUES', '47120', 0.166667, 44.6833);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+(17801, 'BALEYSSAGUES', '47120', 0.166667, 44.6833),
 (17802, 'FEUGAROLLES', '47230', 0.35, 44.2167),
 (17803, 'LACAUSSADE', '47150', 0.833333, 44.5167),
 (17804, 'SAINT-NICOLAS-DE-LA-BALERME', '47220', 0.766667, 44.15),
@@ -18838,13 +18838,13 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (18779, 'OZEVILLE', '50310', -1.33333, 49.5),
 (18780, 'SAINTE-MARIE-DU-BOIS', '50640', -0.9, 48.5667),
 (18781, 'PRECEY', '50220', -1.38333, 48.6),
-(18782, 'AUDERVILLE', '50440', -1.93104, 49.7136),
+(18782, 'AUDERVILLE', '50440', -1.93104, 49.7136);
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (18783, 'REFFUVEILLE', '50520', -1.11667, 48.6667),
 (18784, 'DUCEY', '50220', -1.3, 48.6167),
 (18785, 'BROUAINS', '50150', -0.967778, 48.7214),
 (18786, 'DOMJEAN', '50420', -1.03333, 48.9833),
-(18787, 'VAROUVILLE', '50330', -1.36667, 49.6667);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+(18787, 'VAROUVILLE', '50330', -1.36667, 49.6667),
 (18788, 'LE VICEL', '50760', -1.31667, 49.6333),
 (18789, 'URVILLE', '50700', -1.43333, 49.45),
 (18790, 'ROMAGNY', '50140', -0.966667, 48.65),
@@ -19868,13 +19868,13 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (19808, 'BAYARD-SUR-MARNE', '52170', 5.07667, 48.5542),
 (19809, 'PUELLEMONTIER', '52220', 4.7, 48.5),
 (19810, 'AUBEPIERRE-SUR-AUBE', '52210', 4.91667, 47.9167),
-(19811, 'PRAUTHOY', '52190', 5.28333, 47.6667),
+(19811, 'PRAUTHOY', '52190', 5.28333, 47.6667);
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (19812, 'FAYS', '52130', 5.03333, 48.4667),
 (19813, 'CHAMPIGNEULLES-EN-BASSIGNY', '52150', 5.64389, 48.1317),
 (19814, 'MUSSEY-SUR-MARNE', '52300', 5.15, 48.3833),
 (19815, 'HACOURT', '52150', 5.56667, 48.1667),
-(19816, 'HUMBECOURT', '52290', 4.9, 48.5833);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+(19816, 'HUMBECOURT', '52290', 4.9, 48.5833),
 (19817, 'CHAMPSEVRAINE', '52500', 5.54945, 47.747),
 (19818, 'LOUVIERES', '52800', 5.28333, 48.0333),
 (19819, 'PERTHES', '52100', 4.82334, 48.6562),
@@ -20904,14 +20904,14 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (20843, 'AMENONCOURT', '54450', 6.78333, 48.6333),
 (20844, 'VILLE-AU-MONTOIS', '54620', 5.78333, 49.4167),
 (20845, 'OZERAILLES', '54150', 5.85, 49.2333),
-(20846, 'VILLERS-LE-ROND', '54260', 5.48333, 49.4667),
+(20846, 'VILLERS-LE-ROND', '54260', 5.48333, 49.4667);
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (20847, 'LIVERDUN', '54460', 6.05, 48.75),
 (20848, 'MAIXE', '54370', 6.43333, 48.65),
 (20849, 'AVILLERS', '54490', 5.73584, 49.3234),
 (20850, 'HARAUCOURT', '54110', 6.36667, 48.6667),
 (20851, 'TUCQUEGNIEUX', '54640', 5.88333, 49.3),
-(20852, 'MOUAVILLE', '54800', 5.76667, 49.2167);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+(20852, 'MOUAVILLE', '54800', 5.76667, 49.2167),
 (20853, 'PAGNY-SUR-MOSELLE', '54530', 6.01667, 48.9833),
 (20854, 'VANDIERES', '54121', 6.03333, 48.95),
 (20855, 'SAIZERAIS', '54380', 6.05, 48.8),
@@ -21942,14 +21942,14 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (21880, 'L\'HOPITAL', '57490', 6.73333, 49.1667),
 (21881, 'WALDWEISTROFF', '57320', 6.5, 49.3667),
 (21882, 'BURLIONCOURT', '57170', 6.57945, 48.8609),
-(21883, 'TENTELING', '57980', 6.93333, 49.1167),
+(21883, 'TENTELING', '57980', 6.93333, 49.1167);
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (21884, 'MALLING', '57480', 6.3, 49.4167),
 (21885, 'ZIMMING', '57690', 6.56667, 49.1167),
 (21886, 'ALSTING', '57520', 6.98333, 49.1833),
 (21887, 'HEINING-LES-BOUZONVILLE', '57320', 6.58333, 49.3167),
 (21888, 'PELTRE', '57245', 6.23333, 49.0833),
-(21889, 'HOLACOURT', '57380', 6.51667, 48.9667);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+(21889, 'HOLACOURT', '57380', 6.51667, 48.9667),
 (21890, 'PLAINE-DE-WALSCH', '57870', 7.11556, 48.6909),
 (21891, 'KERPRICH-AUX-BOIS', '57830', 6.96667, 48.7333),
 (21892, 'GOSSELMING', '57930', 7, 48.7833),
@@ -23013,14 +23013,14 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (22950, 'GHYVELDE', '59254', 2.53333, 51.05),
 (22951, 'VILLERS-GUISLAIN', '59297', 3.15, 50.0333),
 (22952, 'ESCAUTPONT', '59278', 3.56667, 50.4167),
-(22953, 'HOUPLINES', '59116', 2.91667, 50.7),
+(22953, 'HOUPLINES', '59116', 2.91667, 50.7);
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (22954, 'VIEUX-CONDE', '59690', 3.33333, 50.4833),
 (22955, 'FOREST-SUR-MARQUE', '59510', 3.18333, 50.6333),
 (22956, 'LESQUIN', '59810', 3.11667, 50.5833),
 (22957, 'BAMBECQUE', '59470', 2.55, 50.9),
 (22958, 'SAULTAIN', '59990', 3.58333, 50.3333),
-(22959, 'DIMONT', '59216', 4.01667, 50.1833);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+(22959, 'DIMONT', '59216', 4.01667, 50.1833),
 (22960, 'ALLENNES-LES-MARAIS', '59251', 2.95, 50.5333),
 (22961, 'ESCARMAIN', '59213', 3.55, 50.2333),
 (22962, 'CAPINGHEM', '59160', 2.96667, 50.65),
@@ -24067,14 +24067,14 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (24003, 'ESQUENNOY', '60120', 2.26667, 49.65),
 (24004, 'CHOQUEUSE-LES-BENARDS', '60360', 2.08333, 49.6667),
 (24005, 'HERICOURT-SUR-THERAIN', '60380', 1.76667, 49.5833),
-(24006, 'MARSEILLE-EN-BEAUVAISIS', '60860', 1.95, 49.5833),
+(24006, 'MARSEILLE-EN-BEAUVAISIS', '60860', 1.95, 49.5833);
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (24007, 'PONTARME', '60520', 2.55, 49.15),
 (24008, 'FITZ-JAMES', '60600', 2.43333, 49.4),
 (24009, 'CREVECOEUR-LE-GRAND', '60360', 2.08333, 49.6),
 (24010, 'MORY-MONTCRUX', '60120', 2.4, 49.5833),
 (24011, 'SAINT-MAXIMIN', '60740', 2.45, 49.2167),
-(24012, 'VENDEUIL-CAPLY', '60120', 2.3, 49.6167);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+(24012, 'VENDEUIL-CAPLY', '60120', 2.3, 49.6167),
 (24013, 'LE PLOYRON', '60420', 2.58333, 49.5833),
 (24014, 'BLICOURT', '60860', 2.05, 49.55),
 (24015, 'LAVILLETERTRE', '60240', 1.93333, 49.2),
@@ -25090,14 +25090,14 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (25025, 'RANSART', '62173', 2.68333, 50.2167),
 (25026, 'FORTEL-EN-ARTOIS', '62270', 2.23333, 50.25),
 (25027, 'MARCONNELLE', '62140', 2.01667, 50.3667),
-(25028, 'HENDECOURT-LES-RANSART', '62175', 2.73333, 50.2),
+(25028, 'HENDECOURT-LES-RANSART', '62175', 2.73333, 50.2);
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (25029, 'BERMICOURT', '62130', 2.23333, 50.4167),
 (25030, 'QUERCAMPS', '62380', 2.05, 50.75),
 (25031, 'TROISVAUX', '62130', 2.35, 50.4),
 (25032, 'OISY-LE-VERGER', '62860', 3.11667, 50.25),
 (25033, 'ERVILLERS', '62121', 2.83333, 50.1667),
-(25034, 'REMY', '62156', 2.96667, 50.25);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+(25034, 'REMY', '62156', 2.96667, 50.25),
 (25035, 'VAULX', '62390', 2.09695, 50.2676),
 (25036, 'BOFFLES', '62390', 2.2, 50.25),
 (25037, 'BEAUVOIR-WAVANS', '62390', 2.16222, 50.2181),
@@ -26135,13 +26135,13 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (26069, 'HAGETAUBIN', '64370', -0.616667, 43.5167),
 (26070, 'OSSE-EN-ASPE', '64490', -0.616667, 43),
 (26071, 'GUICHE', '64520', -1.2, 43.5167),
-(26072, 'BERNADETS', '64160', -0.283333, 43.3833),
+(26072, 'BERNADETS', '64160', -0.283333, 43.3833);
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (26073, 'AUGA', '64450', -0.366667, 43.4833),
 (26074, 'GUINARTHE-PARENTIES', '64390', -0.95, 43.3833),
 (26075, 'SAINT-ARMOU', '64160', -0.3, 43.4167),
 (26076, 'GABASTON', '64160', -0.2, 43.3667),
-(26077, 'CASTEIDE-CAMI', '64170', -0.516667, 43.4167);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+(26077, 'CASTEIDE-CAMI', '64170', -0.516667, 43.4167),
 (26078, 'ASASP-ARROS', '64660', -0.613889, 43.1223),
 (26079, 'LOUBIENG', '64300', -0.75, 43.4333),
 (26080, 'BARZUN', '64530', -0.133333, 43.2167),
@@ -27207,13 +27207,13 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (27140, 'CORBERE', '66130', 2.66667, 42.65),
 (27141, 'ESTAGEL', '66310', 2.7, 42.7667),
 (27142, 'VIVES', '66400', 2.76667, 42.5333),
-(27143, 'TOULOUGES', '66350', 2.83333, 42.6667),
+(27143, 'TOULOUGES', '66350', 2.83333, 42.6667);
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (27144, 'PERPIGNAN', '66000-66100', 2.88333, 42.6833),
 (27145, 'FINESTRET', '66320', 2.51667, 42.6167),
 (27146, 'OREILLA', '66360', 2.25, 42.5667),
 (27147, 'FOSSE', '66220', 2.43333, 42.7833),
-(27148, 'AMELIE-LES-BAINS-PALALDA', '66110', 2.66667, 42.4667);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+(27148, 'AMELIE-LES-BAINS-PALALDA', '66110', 2.66667, 42.4667),
 (27149, 'BUTTEN', '67430', 7.21667, 48.9667),
 (27150, 'SAINT-NABOR', '67530', 7.41667, 48.45),
 (27151, 'OSTWALD', '67540', 7.71667, 48.55),
@@ -28266,13 +28266,13 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (28198, 'CURIS-AU-MONT-D\'OR', '69250', 4.82112, 45.8703),
 (28199, 'LIMONEST', '69760', 4.76667, 45.8333),
 (28200, 'GRANDRIS', '69870', 4.48333, 46.0333),
-(28201, 'CRAPONNE', '69290', 4.71667, 45.7333),
+(28201, 'CRAPONNE', '69290', 4.71667, 45.7333);
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (28202, 'POLLIONNAY', '69290', 4.65, 45.7667),
 (28203, 'RANCHAL', '69470', 4.4, 46.1333),
 (28204, 'SAINT-BONNET-DE-MURE', '69720', 5.03333, 45.6833),
 (28205, 'AMBERIEUX', '69480', 4.73723, 45.9281),
-(28206, 'LAMURE-SUR-AZERGUES', '69870', 4.5, 46.0667);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+(28206, 'LAMURE-SUR-AZERGUES', '69870', 4.5, 46.0667),
 (28207, 'CHARNAY', '69380', 4.66667, 45.9),
 (28208, 'VILLEURBANNE', '69100', 4.88333, 45.7667),
 (28209, 'FLEURIEU-SUR-SAONE', '69250', 4.85, 45.8667),
@@ -29297,13 +29297,13 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (29228, 'LA CHARMEE', '71100', 4.8, 46.7167),
 (29229, 'LE PLANOIS', '71330', 5.33333, 46.7833),
 (29230, 'SEMUR-EN-BRIONNAIS', '71110', 4.08333, 46.2667),
-(29231, 'SAINT-AMOUR-BELLEVUE', '71570', 4.75, 46.25),
+(29231, 'SAINT-AMOUR-BELLEVUE', '71570', 4.75, 46.25);
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (29232, 'SAINT-MARTIN-DE-LIXY', '71740', 4.25, 46.2),
 (29233, 'SAINTE-RADEGONDE', '71320', 4.06667, 46.6833),
 (29234, 'SAINT-SERNIN-DU-BOIS', '71200', 4.43333, 46.8333),
 (29235, 'MASSILLY', '71250', 4.66667, 46.4833),
-(29236, 'OYE', '71610', 4.18333, 46.3167);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+(29236, 'OYE', '71610', 4.18333, 46.3167),
 (29237, 'MONTCEAUX-RAGNY', '71240', 4.85, 46.6167),
 (29238, 'OUROUX-SUR-SAONE', '71370', 4.95, 46.7167),
 (29239, 'DAMPIERRE-EN-BRESSE', '71310', 5.2, 46.8333),
@@ -30317,13 +30317,13 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (30247, 'MESSERY', '74140', 6.3, 46.35),
 (30248, 'PEILLONNEX', '74250', 6.38333, 46.1333),
 (30249, 'BONNEVILLE', '74130', 6.41667, 46.0833),
-(30250, 'ALLONZIER-LA-CAILLE', '74350', 6.11667, 46),
+(30250, 'ALLONZIER-LA-CAILLE', '74350', 6.11667, 46);
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (30251, 'MONT-SAXONNEX', '74130', 6.48333, 46.05),
 (30252, 'CHESSENAZ', '74270', 5.9, 46.0333),
 (30253, 'SAINT-CERGUES', '74140', 6.31667, 46.2333),
 (30254, 'SAINT-JEOIRE', '74490', 6.46667, 46.15),
-(30255, 'LA CHAPELLE-SAINT-MAURICE', '74410', 6.15, 45.7833);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+(30255, 'LA CHAPELLE-SAINT-MAURICE', '74410', 6.15, 45.7833),
 (30256, 'LA RIVIERE-ENVERSE', '74440', 6.63333, 46.1),
 (30257, 'LOVAGNY', '74330', 6.03333, 45.9),
 (30258, 'CORDON', '74700', 6.61223, 45.9231),
@@ -31325,13 +31325,13 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (31254, 'MAINCY', '77950', 2.7, 48.55),
 (31255, 'TRILPORT', '77470', 2.95, 48.95),
 (31256, 'COCHEREL', '77440', 3.1, 49.0167),
-(31257, 'BEAUVOIR', '77390', 2.86667, 48.6333),
+(31257, 'BEAUVOIR', '77390', 2.86667, 48.6333);
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (31258, 'VIGNELY', '77450', 2.81667, 48.9333),
 (31259, 'DHUISY', '77440', 3.16667, 49.0333),
 (31260, 'PERTHES', '77930', 2.555, 48.4775),
 (31261, 'CHAMBRY', '77910', 2.9, 49),
-(31262, 'VERNOU-LA-CELLE-SUR-SEINE', '77670', 2.84639, 48.3878);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+(31262, 'VERNOU-LA-CELLE-SUR-SEINE', '77670', 2.84639, 48.3878),
 (31263, 'SAINT-THIBAULT-DES-VIGNES', '77400', 2.68333, 48.8667),
 (31264, 'SAMMERON', '77260', 3.08333, 48.95),
 (31265, 'VOINSLES', '77540', 3, 48.6833),
@@ -32346,13 +32346,13 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (32274, 'CANCHY', '80150', 1.88333, 50.1833),
 (32275, 'FONTAINE-LE-SEC', '80140', 1.8, 49.95),
 (32276, 'MERICOURT-L\'ABBE', '80113', 2.56667, 49.95),
-(32277, 'MEZEROLLES', '80600', 2.23333, 50.1833),
+(32277, 'MEZEROLLES', '80600', 2.23333, 50.1833);
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (32278, 'BUS-LES-ARTOIS', '80560', 2.54139, 50.1034),
 (32279, 'VILLERS-BOCAGE', '80260', 2.33333, 49.9833),
 (32280, 'GRUNY', '80700', 2.83333, 49.7333),
 (32281, 'BALATRE', '80700', 2.86667, 49.7167),
-(32282, 'WARSY', '80500', 2.65, 49.7);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+(32282, 'WARSY', '80500', 2.65, 49.7),
 (32283, 'VAUCHELLES-LES-DOMART', '80620', 2.05, 50.05),
 (32284, 'MEZIERES-EN-SANTERRE', '80110', 2.55, 49.7833),
 (32285, 'FONTAINE-SUR-MAYE', '80150', 1.93333, 50.2333),
@@ -33402,14 +33402,14 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (33329, 'MARSAL', '81430', 2.28333, 43.9333),
 (33330, 'CARMAUX', '81400', 2.15, 44.05),
 (33331, 'CAMBOUNES', '81260', 2.45, 43.5833),
-(33332, 'AUSSAC', '81600', 2.04056, 43.8648),
+(33332, 'AUSSAC', '81600', 2.04056, 43.8648);
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (33333, 'POULAN-POUZOLS', '81120', 2.11667, 43.85),
 (33334, 'SOUEL', '81170', 1.95556, 44.0303),
 (33335, 'CASTRES', '81100', 2.25, 43.6),
 (33336, 'VABRE', '81330', 2.43333, 43.6833),
 (33337, 'SAINT-JULIEN-GAULENE', '81340', 2.35, 44),
-(33338, 'PEYREGOUX', '81440', 2.2, 43.6833);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+(33338, 'PEYREGOUX', '81440', 2.2, 43.6833),
 (33339, 'ROQUEMAURE', '81800', 1.61667, 43.8167),
 (33340, 'ROQUECOURBE', '81210', 2.3, 43.6667),
 (33341, 'SALVAGNAC', '81630', 1.7, 43.9167),
@@ -34430,14 +34430,14 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (34356, 'VICQ-SUR-GARTEMPE', '86260', 0.866667, 46.7167),
 (34357, 'SAINT-PIERRE-D\'EXIDEUIL', '86400', 0.27, 46.1509),
 (34358, 'INGRANDES', '86220', 0.566667, 46.8667),
-(34359, 'SAINT-MARTIN-L\'ARS', '86350', 0.533333, 46.2167),
+(34359, 'SAINT-MARTIN-L\'ARS', '86350', 0.533333, 46.2167);
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (34360, 'LIZANT', '86400', 0.283333, 46.0833),
 (34361, 'CURCAY-SUR-DIVE', '86120', -0.0572222, 47.0117),
 (34362, 'PRESSAC', '86460', 0.566667, 46.1167),
 (34363, 'ANGLES-SUR-L\'ANGLIN', '86260', 0.883333, 46.7),
 (34364, 'SAINT-SAUVANT', '86600', 0.058333, 46.3583),
-(34365, 'VERRUE', '86420', 0.166667, 46.8667);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+(34365, 'VERRUE', '86420', 0.166667, 46.8667),
 (34366, 'VAUX', '86700', 0.216667, 46.3),
 (34367, 'MASSOGNES', '86170', 0.083333, 46.75),
 (34368, 'LAVAUSSEAU', '86470', 0.083333, 46.55),
@@ -35476,15 +35476,15 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (35401, 'SUBLIGNY', '89100', 3.2, 48.1667),
 (35402, 'PIMELLES', '89740', 4.16667, 47.8333),
 (35403, 'GUILLON', '89420', 4.1, 47.5167),
-(35404, 'BAZARNES', '89460', 3.66667, 47.6667),
+(35404, 'BAZARNES', '89460', 3.66667, 47.6667);
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (35405, 'VILLENEUVE-LES-GENETS', '89350', 3.1, 47.7333),
 (35406, 'LAVAU', '89170', 2.98333, 47.6),
 (35407, 'CHEMILLY-SUR-SEREIN', '89800', 3.85, 47.7667),
 (35408, 'SAUVIGNY-LE-BEUREAL', '89420', 4.11667, 47.4833),
 (35409, 'DRACY', '89130', 3.25, 47.7583),
 (35410, 'CHEVILLON', '89120', 3.18333, 47.9167),
-(35411, 'VAL-DE-MERCY', '89580', 3.58333, 47.6833);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+(35411, 'VAL-DE-MERCY', '89580', 3.58333, 47.6833),
 (35412, 'RAVIERES', '89390', 4.21667, 47.7333),
 (35413, 'SAINT-FARGEAU', '89170', 3.06667, 47.6333),
 (35414, 'PACY-SUR-ARMANCON', '89160', 4.08333, 47.7667),
@@ -36521,15 +36521,15 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 (36445, 'NOCETA', '20242', 9.20918, 42.1975),
 (36446, 'MERIA', '20287', 9.45279, 42.927),
 (36447, 'TOMINO', '20248', 9.44279, 42.9459),
-(36448, 'MORSIGLIA', '20238', 9.36445, 42.9456),
+(36448, 'MORSIGLIA', '20238', 9.36445, 42.9456);
+INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
 (36449, 'CENTURI', '20238', 9.36918, 42.9603),
 (36450, 'ROGLIANO', '20247-20248', 9.41834, 42.9562),
 (36451, 'CAGNANO', '20228', 9.42973, 42.8753),
 (36452, 'BARRETTALI', '20228', 9.35529, 42.877),
 (36453, 'PINO', '20228', 9.3514, 42.9081),
 (36454, 'LURI', '20228', 9.40529, 42.8967),
-(36455, 'PIETRACORBARA', '20233', 9.42973, 42.8464);
-INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
+(36455, 'PIETRACORBARA', '20233', 9.42973, 42.8464),
 (36456, 'SISCO', '20233', 9.43612, 42.8159),
 (36457, 'OLCANI', '20217', 9.37029, 42.81),
 (36458, 'CANARI', '20217', 9.33001, 42.8456),
@@ -36798,7 +36798,7 @@ INSERT INTO `cities` (`id`, `name`, `postal_code`, `longitude_deg`, `latitude_de
 -- --------------------------------------------------------
 
 --
--- Table structure for table `companies`
+-- Structure de la table `companies`
 --
 
 CREATE TABLE `companies` (
@@ -36806,47 +36806,56 @@ CREATE TABLE `companies` (
   `name` varchar(50) NOT NULL,
   `address_1` varchar(100) NOT NULL,
   `address_2` varchar(100) NOT NULL,
-  `postal_code` varchar(100) NOT NULL,
+  `city_id` int(11) NOT NULL,
   `siret` varchar(14) NOT NULL,
   `add_date` datetime NOT NULL,
   `update_date` datetime NOT NULL,
-  `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
   `delete_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `companies`
+-- Déchargement des données de la table `companies`
 --
 
-INSERT INTO `companies` (`id`, `name`, `address_1`, `address_2`, `postal_code`, `siret`, `add_date`, `update_date`, `deleted`, `delete_date`) VALUES
-(1, 'World Company', '15 avenue des champs Elysée', '', '75008', '12345678912345', '2022-11-10 03:34:34', '2022-11-10 03:34:34', 0, NULL);
+INSERT INTO `companies` (`id`, `name`, `address_1`, `address_2`, `city_id`, `siret`, `add_date`, `update_date`, `deleted`, `delete_date`) VALUES
+(1, 'World Company', '15 avenue des champs Elysée', '', 36842, '12345678912345', '2022-11-10 03:34:34', '2022-11-10 03:34:34', 0, NULL),
+(2, 'Les bonbons de nounous', '48 avenue des champs Elysée', 'Bâtiment 3', 36842, '9876543219876', '2022-11-13 16:46:14', '2022-11-13 16:46:14', 0, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customers`
+-- Structure de la table `customers`
 --
 
 CREATE TABLE `customers` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `is_company` tinyint(1) NOT NULL DEFAULT '1',
+  `is_company` tinyint(1) NOT NULL DEFAULT 1,
   `user_id` int(11) NOT NULL,
   `address_1` varchar(100) NOT NULL,
   `address_2` varchar(100) NOT NULL,
-  `postal_code` varchar(100) NOT NULL,
+  `city_id` int(11) NOT NULL,
   `email` varchar(100) NOT NULL,
   `phone` varchar(20) NOT NULL,
   `add_date` datetime NOT NULL,
   `update_date` datetime NOT NULL,
-  `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
   `delete_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `customers`
+--
+
+INSERT INTO `customers` (`id`, `name`, `is_company`, `user_id`, `address_1`, `address_2`, `city_id`, `email`, `phone`, `add_date`, `update_date`, `deleted`, `delete_date`) VALUES
+(1, 'Nounours Building Ltd', 1, 3, '27 avenue des animaux', '', 26152, 'nounours.boss@gmail.com', '01 11 22 33 44', '2022-11-13 01:26:21', '2022-11-13 01:26:21', 0, NULL),
+(2, 'Miaou Blanc Consulting', 1, 2, '16 rue de papillons', '', 35998, 'miaou.blanc@miaoublancconsulting.com', '01 11 22 33 55', '2022-11-13 16:54:30', '2022-11-13 16:54:30', 0, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Structure de la table `orders`
 --
 
 CREATE TABLE `orders` (
@@ -36856,12 +36865,12 @@ CREATE TABLE `orders` (
   `total_TTC` float NOT NULL,
   `add_date` datetime NOT NULL,
   `update_date` datetime NOT NULL,
-  `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
   `delete_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `orders`
+-- Déchargement des données de la table `orders`
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `total_HT`, `total_TTC`, `add_date`, `update_date`, `deleted`, `delete_date`) VALUES
@@ -36872,12 +36881,13 @@ INSERT INTO `orders` (`id`, `user_id`, `total_HT`, `total_TTC`, `add_date`, `upd
 (5, 2, 1165.59, 1229.7, '2022-11-05 02:47:10', '2022-11-05 02:47:10', 0, NULL),
 (6, 2, 773.95, 896.266, '2022-11-09 02:45:36', '2022-11-09 02:45:36', 0, NULL),
 (7, 2, 20289.9, 24347.9, '2022-11-09 02:48:27', '2022-11-09 02:48:27', 1, '2022-11-09 02:53:03'),
-(8, 2, 75719.6, 90863.5, '2022-11-09 03:07:23', '2022-11-09 03:07:23', 0, NULL);
+(8, 2, 75719.6, 90863.5, '2022-11-09 03:07:23', '2022-11-09 03:07:23', 1, '2022-11-12 23:54:44'),
+(9, 3, 443.89, 468.304, '2022-11-12 04:20:05', '2022-11-12 04:20:05', 0, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_lines`
+-- Structure de la table `order_lines`
 --
 
 CREATE TABLE `order_lines` (
@@ -36894,12 +36904,12 @@ CREATE TABLE `order_lines` (
   `total_TTC` float NOT NULL,
   `add_date` datetime NOT NULL,
   `update_date` datetime NOT NULL,
-  `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
   `delete_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `order_lines`
+-- Déchargement des données de la table `order_lines`
 --
 
 INSERT INTO `order_lines` (`id`, `order_id`, `user_id`, `product_id`, `reference`, `designation`, `unit_price`, `rate`, `quantity`, `total_HT`, `total_TTC`, `add_date`, `update_date`, `deleted`, `delete_date`) VALUES
@@ -36924,12 +36934,16 @@ INSERT INTO `order_lines` (`id`, `order_id`, `user_id`, `product_id`, `reference
 (19, 7, 2, 8, 'AIUP335', 'Playstation 5', 549.99, 20, 6, 3299.94, 3959.93, '2022-11-09 02:48:27', '2022-11-09 02:48:27', 0, NULL),
 (20, 8, 2, 8, 'AIUP335', 'Playstation 5', 549.99, 20, 45, 24749.6, 29699.5, '2022-11-09 03:07:23', '2022-11-09 03:07:23', 0, NULL),
 (21, 8, 2, 2, 'KBTR124', 'I phone 14', 1699, 20, 30, 50970, 61164, '2022-11-09 03:07:23', '2022-11-09 03:07:23', 0, NULL),
-(22, 8, 2, 1, 'XKCR845', 'Livre sur Elon Musk', 7.99, 5.5, 15, 119.85, 126.442, '2022-11-09 03:07:23', '2022-11-09 03:07:23', 1, '2022-11-09 03:07:37');
+(22, 8, 2, 1, 'XKCR845', 'Livre sur Elon Musk', 7.99, 5.5, 15, 119.85, 126.442, '2022-11-09 03:07:23', '2022-11-09 03:07:23', 1, '2022-11-09 03:07:37'),
+(23, 9, 3, 1, 'XKCR845', 'Livre sur Elon Musk', 7.99, 5.5, 3, 23.97, 25.2883, '2022-11-12 04:20:05', '2022-11-12 04:20:05', 0, NULL),
+(24, 9, 3, 5, 'XKCL244', 'Manuel de physique quantique', 55.99, 5.5, 4, 223.96, 236.278, '2022-11-12 04:20:05', '2022-11-12 04:20:05', 0, NULL),
+(25, 9, 3, 6, 'XKCL276', 'Manuel de probabilité et statistique', 48.99, 5.5, 4, 195.96, 206.738, '2022-11-12 04:20:05', '2022-11-12 23:44:57', 0, NULL),
+(26, 9, 3, 2, 'KBTR124', 'I phone 14', 1699, 20, 4, 6796, 8155.2, '2022-11-12 04:20:06', '2022-11-12 23:29:29', 1, '2022-11-12 23:43:46');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products`
+-- Structure de la table `products`
 --
 
 CREATE TABLE `products` (
@@ -36941,12 +36955,12 @@ CREATE TABLE `products` (
   `rate` float NOT NULL,
   `add_date` datetime NOT NULL,
   `update_date` datetime NOT NULL,
-  `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
   `delete_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `products`
+-- Déchargement des données de la table `products`
 --
 
 INSERT INTO `products` (`id`, `user_id`, `reference`, `designation`, `unit_price`, `rate`, `add_date`, `update_date`, `deleted`, `delete_date`) VALUES
@@ -36957,18 +36971,20 @@ INSERT INTO `products` (`id`, `user_id`, `reference`, `designation`, `unit_price
 (5, 2, 'XKCL244', 'Manuel de physique quantique', 55.99, 5.5, '2022-11-05 02:45:12', '2022-11-05 02:45:12', 0, NULL),
 (6, 2, 'XKCL276', 'Manuel de probabilité et statistique', 48.99, 5.5, '2022-11-05 02:46:21', '2022-11-05 02:46:21', 0, NULL),
 (7, 2, 'XKCR689', 'Livre sur Jeff Bezos', 15.49, 5.5, '2022-11-09 02:15:16', '2022-11-09 02:15:16', 1, '2022-11-09 02:22:41'),
-(8, 2, 'AIUP335', 'Playstation 5', 549.99, 20, '2022-11-09 02:29:06', '2022-11-09 02:29:06', 0, NULL);
+(8, 2, 'AIUP335', 'Playstation 5', 549.99, 20, '2022-11-09 02:29:06', '2022-11-09 02:29:06', 0, NULL),
+(9, 3, 'AIUJ476', 'Playstation 4', 319.99, 20, '2022-11-11 20:34:06', '2022-11-11 21:06:05', 1, '2022-11-11 21:15:59'),
+(10, 3, 'AIUJ123', 'Playstation 2', 229.99, 20, '2022-11-11 21:17:32', '2022-11-11 21:18:09', 1, '2022-11-11 21:18:22');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Structure de la table `users`
 --
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `company_id` int(11) DEFAULT NULL,
-  `is_active` tinyint(1) NOT NULL DEFAULT '1',
+  `is_active` tinyint(1) NOT NULL DEFAULT 1,
   `position` enum('CEO','SALES','CLERK','') NOT NULL DEFAULT 'CLERK',
   `firstname` varchar(50) NOT NULL,
   `lastname` varchar(50) NOT NULL,
@@ -36978,107 +36994,108 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `users`
+-- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id`, `company_id`, `is_active`, `position`, `firstname`, `lastname`, `email`, `password`, `register_date`) VALUES
-(2, 0, 1, 'CLERK', 'Petit', 'NOUNOURS', 'petit.nounours@gmail.com', '$2y$10$4q6QgY0fkIeD2xAf0IDHM.XW0m5smtjJ7kRgKX02xaxYMn6LZwfRO', '2022-10-23 14:53:35'),
-(3, 1, 1, 'CEO', 'Rémi', 'RODRIGUES', 'remi_rodrigues@hotmail.com', '$2y$10$K5UuJ1Z/eeW7waLJdrUY2uz9uyM1WMhQkcNZ2QiTCBWtKZDGiSg7y', '2022-11-10 03:34:34');
+(2, 1, 1, 'CLERK', 'Petit', 'NOUNOURS', 'petit.nounours@gmail.com', '$2y$10$4q6QgY0fkIeD2xAf0IDHM.XW0m5smtjJ7kRgKX02xaxYMn6LZwfRO', '2022-10-23 14:53:35'),
+(3, 1, 1, 'CEO', 'Rémi', 'RODRIGUES', 'remi_rodrigues@hotmail.com', '$2y$10$K5UuJ1Z/eeW7waLJdrUY2uz9uyM1WMhQkcNZ2QiTCBWtKZDGiSg7y', '2022-11-10 03:34:34'),
+(4, 2, 1, 'CEO', 'Petit', 'NOUNOURS', 'nounours.gentil@gmail.com', '$2y$10$vYthKgiHdSMwu9AiCpFtf.JazhpNd.nvcuOHZ2waUF8JavMICZusG', '2022-11-13 16:46:15');
 
 --
--- Indexes for dumped tables
+-- Index pour les tables déchargées
 --
 
 --
--- Indexes for table `cities`
+-- Index pour la table `cities`
 --
 ALTER TABLE `cities`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `ville_nom` (`name`),
+  ADD KEY `ville_nom` (`city_name`),
   ADD KEY `ville_code_postal` (`postal_code`),
   ADD KEY `ville_longitude_latitude_deg` (`longitude_deg`,`latitude_deg`);
 
 --
--- Indexes for table `companies`
+-- Index pour la table `companies`
 --
 ALTER TABLE `companies`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `customers`
+-- Index pour la table `customers`
 --
 ALTER TABLE `customers`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `orders`
+-- Index pour la table `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `order_lines`
+-- Index pour la table `order_lines`
 --
 ALTER TABLE `order_lines`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `products`
+-- Index pour la table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Index pour la table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT for table `cities`
+-- AUTO_INCREMENT pour la table `cities`
 --
 ALTER TABLE `cities`
   MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36855;
 
 --
--- AUTO_INCREMENT for table `companies`
+-- AUTO_INCREMENT pour la table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `customers`
+-- AUTO_INCREMENT pour la table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `orders`
+-- AUTO_INCREMENT pour la table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `order_lines`
+-- AUTO_INCREMENT pour la table `order_lines`
 --
 ALTER TABLE `order_lines`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- AUTO_INCREMENT for table `products`
+-- AUTO_INCREMENT pour la table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
