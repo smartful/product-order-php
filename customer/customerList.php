@@ -40,12 +40,15 @@ echo htmlHead("Clients", "../style");
             include("../utils/connexion_db.php");
 
             $customers = $bdd->prepare("
-                SELECT id, name, is_company FROM customers
-                WHERE user_id = :user_id
-                AND deleted = 0;
+                SELECT customers.id, customers.name, customers.is_company 
+                FROM customers
+                INNER JOIN users ON users.id = customers.user_id
+                INNER JOIN companies ON companies.id = users.company_id
+                WHERE users.company_id = :company_id
+                AND customers.deleted = 0;
             ");
             $customers->execute([
-                "user_id"=> $_SESSION["id"],
+                "company_id"=> $_SESSION["company_id"],
             ]);
             $data = $customers->fetchAll();
             ?>
