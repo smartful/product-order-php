@@ -52,10 +52,11 @@ echo htmlHead("Formulaire de modification", "../style");
 
                 $product = $bdd->prepare("
                     UPDATE products
-                    SET reference = :reference, designation = :designation, unit_price = :unit_price, rate = :rate, update_date = NOW()
+                    SET user_id = :user_id, reference = :reference, designation = :designation, unit_price = :unit_price, rate = :rate, update_date = NOW()
                     WHERE id = :id_product;
                 ");
                 $product->execute([
+                    "user_id"=> $_SESSION["id"],
                     "reference"=> $reference,
                     "designation"=> $designation,
                     "unit_price"=> $unitPrice,

@@ -114,7 +114,9 @@ echo htmlHead("Formulaire de modification", "../style");
                         </table>
                     </fieldset>
                     <p>
-                        <input type="submit" value="Envoyer"/>
+                    <button class="button"><a href="productList.php">Annuler</a></button>
+                        <input type="submit" value="Envoyer" class="button validationButton"/>
+                        
                     </p>
                 </form>
             <?php endif; ?>

@@ -36,13 +36,14 @@ $cities = $bdd->query('SELECT * FROM cities ORDER BY city_name;');
             <form method="post" action="addCustomerProcess.php">
                 <fieldset>
                     <legend>Information du client</legend>
+                    <p>Champs sont obligatoires : *</p>
                     <table class="table_form">
                         <tr>
-                            <td><label for="name">Non</label> </td>
+                            <td><label for="name">Nom*</label> </td>
                             <td><input type="text" name="name" id="name" size=10/></td>
                         </tr>
                         <tr>
-                            <td><label>Typologie</label> </td>
+                            <td><label>Typologie*</label> </td>
                             <td>
                                 <input type="radio" id="company" name="typology" value="company" checked>
                                 <label for="company">Entreprise</label>
@@ -51,7 +52,7 @@ $cities = $bdd->query('SELECT * FROM cities ORDER BY city_name;');
                             </td>
                         </tr>
                         <tr>
-                            <td><label for="address_1">Adresse 1</label> </td>
+                            <td><label for="address_1">Adresse 1*</label> </td>
                             <td><input type=text name="address_1" id="address_1"/></td>
                         </tr>
                         <tr>
@@ -59,7 +60,7 @@ $cities = $bdd->query('SELECT * FROM cities ORDER BY city_name;');
                             <td><input type=text name="address_2" id="address_2"/></td>
                         </tr>
                         <tr>
-                            <td><label for="city">Ville</label> </td>
+                            <td><label for="city">Ville*</label> </td>
                             <td>
                                 <input name="city" list="city" placeholder="Sélectionner la ville ...">
                                 <datalist  name="city" id="city">
@@ -73,11 +74,11 @@ $cities = $bdd->query('SELECT * FROM cities ORDER BY city_name;');
                             </td>
                         </tr>
                         <tr>
-                            <td><label for="email">Email</label> </td>
+                            <td><label for="email">E-mail*</label> </td>
                             <td><input type=email name="email" id="email"/></td>
                         </tr>
                         <tr>
-                            <td><label for="phone">Téléphone</label> </td>
+                            <td><label for="phone">Téléphone*</label> </td>
                             <td><input type=phone name="phone" id="phone"/></td>
                         </tr>
                     </table>

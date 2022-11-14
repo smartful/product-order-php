@@ -25,7 +25,7 @@ $cities = $bdd->query('SELECT * FROM cities ORDER BY city_name;');
             <div class="element_menu">
                 <h3>Activités</h3>
                 <ul>
-                    <li><a href="productList.php">Produits</a></li>
+                    <li><a href="../product/productList.php">Produits</a></li>
                     <li><a href="customerList.php">Clients</a></li>
                     <li><a href="../order/orderList.php">Commandes</a></li>
                 </ul>
@@ -37,7 +37,7 @@ $cities = $bdd->query('SELECT * FROM cities ORDER BY city_name;');
 
 
         $customer = $bdd->prepare("
-            SELECT customers.*, cities.*
+            SELECT customers.*, cities.id AS cities_id, cities.city_name, cities.postal_code
             FROM customers
             LEFT JOIN cities ON cities.id = customers.city_id
             INNER JOIN users ON users.id = customers.user_id
@@ -50,22 +50,23 @@ $cities = $bdd->query('SELECT * FROM cities ORDER BY city_name;');
             "customer_id"=> $id,
             "company_id"=> $_SESSION["company_id"],
         ]);
-        $data = $customer->fetch();
+        $data = $customer->fetch(PDO::FETCH_ASSOC);
         ?>
 
         <div id="corps">
             <h1>Modification d'un client</h1>
             <?php if ($data == false): ?>
                 <?= "Vous n'êtes pas autorisé à accéder à ce client ! <br/><br/>"; ?>
-                <?= "Retournez sur la <a href='productList.php'>page des clients</a>.<br/>"; ?>
+                <?= "Retournez sur la <a href='customerList.php'>page des clients</a>.<br/>"; ?>
             <?php else: ?>
-                <form method="post" action="updateProductProcess.php">
-                    <input type="hidden" name="id_product" value="<?= $data["id"]; ?>"/>
+                <form method="post" action="updateCustomerProcess.php">
+                    <input type="hidden" name="id_customer" value="<?= $data["id"]; ?>"/>
                     <fieldset>
                         <legend>Information du produit</legend>
-                        <table>
+                        <p>Champs sont obligatoires : *</p>
+                        <table class="table_form">
                             <tr>
-                                <td><label for="reference">Nom</label> </td>
+                                <td><label for="name">Nom*</label> </td>
                                 <td>
                                     <input
                                         type="text"
@@ -77,7 +78,7 @@ $cities = $bdd->query('SELECT * FROM cities ORDER BY city_name;');
                                 </td>
                             </tr>
                             <tr>
-                                <td><label for="designation">Typologie</label> </td>
+                                <td><label for="designation">Typologie*</label> </td>
                                 <td>
                                     <input
                                         type="radio"
@@ -98,7 +99,7 @@ $cities = $bdd->query('SELECT * FROM cities ORDER BY city_name;');
                                 </td>
                             </tr>
                             <tr>
-                                <td><label for="address_1">adresse 1</label> </td>
+                                <td><label for="address_1">adresse 1*</label> </td>
                                 <td>
                                     <input
                                         type="text"
@@ -120,12 +121,12 @@ $cities = $bdd->query('SELECT * FROM cities ORDER BY city_name;');
                                 </td>
                             </tr>
                             <tr>
-                                <td><label for="rate">Ville</label> </td>
+                                <td><label for="rate">Ville*</label> </td>
                                 <td>
-                                    <input name="city" list="city" placeholder="Sélectionner la ville ...">
+                                    <input name="city" list="city" placeholder=<?= $data['city_name']; ?>>
                                     <datalist  name="city" id="city">
-                                        <option value="<?= $data["city_id"]; ?>" selected>
-                                        <?= "[".$data['postal_code']."] ".$data['city_name']; ?>
+                                        <option value="<?= $data["cities_id"]; ?>" selected>
+                                            <?= "[".$data['postal_code']."] ".$data['city_name']; ?>
                                         </option>
                                         <?php while ($dataCity = $cities->fetch()): ?>
                                             <option value=<?= $dataCity['id']; ?>>
@@ -136,7 +137,7 @@ $cities = $bdd->query('SELECT * FROM cities ORDER BY city_name;');
                                 </td>
                             </tr>
                             <tr>
-                                <td><label for="email">E-mail</label> </td>
+                                <td><label for="email">E-mail*</label> </td>
                                 <td>
                                     <input
                                         type="email"
@@ -147,7 +148,7 @@ $cities = $bdd->query('SELECT * FROM cities ORDER BY city_name;');
                                 </td>
                             </tr>
                             <tr>
-                                <td><label for="phone">Téléphone</label> </td>
+                                <td><label for="phone">Téléphone*</label> </td>
                                 <td>
                                     <input
                                         type="phone"
@@ -160,7 +161,8 @@ $cities = $bdd->query('SELECT * FROM cities ORDER BY city_name;');
                         </table>
                     </fieldset>
                     <p>
-                        <input type="submit" value="Envoyer" class="cta_button validationButton"/>
+                        <button class="button"><a href="customerList.php">Annuler</a></button>
+                        <input type="submit" value="Envoyer" class="button validationButton"/>
                     </p>
                 </form>
             <?php endif; ?>

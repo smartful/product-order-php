@@ -132,7 +132,7 @@ echo htmlHead("Formulaire de modification", "../style");
                 $displayText .= "total HT : ".round($orderTotalHT, 2)." €<br/>";
                 $displayText .= "total TTC : ".round($orderTotalTTC, 2)." €<br/>";
                 $displayText .= "-----------------------------<br/><br/>";
-                $displayText .= "Vous pouvez voir l'ajout sur la <a href='detailOrder.php?id=".$orderId."'>page de la commande n°".$orderId."</a>.<br/><br/>";
+                $displayText .= "Vous pouvez voir la modification sur la <a href='detailOrder.php?id=".$orderId."'>page de la commande n°".$orderId."</a>.<br/><br/>";
             }
 
             echo $displayText;
