@@ -1,8 +1,7 @@
 <?php
 require("../layout/htmlHead.php");
 session_start();
-echo htmlHead("Suppression d'une commande", "../style");
-
+echo htmlHead("Formulaire de suppression", "../style");
 ?>
     <body>
         <?php include("../layout/header.php"); ?>
@@ -24,36 +23,37 @@ echo htmlHead("Suppression d'une commande", "../style");
                 <h3>Activités</h3>
                 <ul>
                     <li><a href="../product/productList.php">Produits</a></li>
-                    <li><a href="../customer/customerList.php">Clients</a></li>
-                    <li><a href="orderList.php">Commandes</a></li>
+                    <li><a href="customerList.php">Clients</a></li>
+                    <li><a href="../order/orderList.php">Commandes</a></li>
                 </ul>
             </div>
         </div>
 
         <div id="corps">
-            <h1>Traitement de la suppression d'une commande</h1>
+            <h1>Traitement de la suppression d'un client</h1>
             <?php
             $displayText = "";
-            if (empty($_POST['order_id'])) {
-                $displayText .= "Aucun identifiant commande n'est identifié<br/>";
-                $displayText .= "Veillez, s'il vous plait, réessayer : <a href='orderList.php'>Page des commandes</a>";
+            if (empty($_POST['customer_id'])) {
+                $displayText .= "Aucun identifiant client n'est identifié<br/>";
+                $displayText .= "Veillez, s'il vous plait, réessayer : <a href='customerList.php'>Page des clients</a>";
             } else {
-                $orderId = intval($_POST['order_id']);
+                $customerId = intval($_POST['customer_id']);
+
                 // On se connecte au la SGBD Mysql
                 include("../utils/connexion_db.php");
 
-                $orderLine = $bdd->prepare("
-                    UPDATE orders
+                $product = $bdd->prepare("
+                    UPDATE customers
                     SET user_id = :user_id, deleted = 1, delete_date = NOW()
-                    WHERE id = :order_id;
+                    WHERE id = :customer_id;
                 ");
-                $orderLine->execute([
+                $product->execute([
                     "user_id"=> $_SESSION["id"],
-                    "order_id"=> $orderId
+                    "customer_id"=> $customerId
                 ]);
 
-                $displayText .= "Suppression de la commande n°".$orderId." validé <br/><br/>";
-                $displayText .= "Vous pouvez voir la suppression sur la <a href='orderList.php'>page des commandes</a>.<br/><br/>";
+                $displayText .= "Suppression du client validé <br/><br/>";
+                $displayText .= "Vous pouvez constatez la suppression sur la <a href='customerList.php'>page des clients</a>.<br/><br/>";
             }
 
             echo $displayText;

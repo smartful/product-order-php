@@ -41,10 +41,11 @@ $orderId = intval($_POST['order_id']);
             // On réalise le soft delete
             $orderLine = $bdd->prepare("
                 UPDATE order_lines
-                SET deleted = 1, delete_date = NOW()
+                SET user_id = :user_id, deleted = 1, delete_date = NOW()
                 WHERE id = :line_order_id;
             ");
             $orderLine->execute([
+                "user_id"=> $_SESSION["id"],
                 "line_order_id"=> $lineOrderId
             ]);
 
@@ -69,12 +70,13 @@ $orderId = intval($_POST['order_id']);
             // Finalement on met à jour la commande
             $product = $bdd->prepare("
                 UPDATE orders
-                SET total_HT = :order_total_HT, total_TTC = :order_total_TTC
+                SET total_HT = :order_total_HT, total_TTC = :order_total_TTC, user_id = :user_id, update_date = NOW()
                 WHERE id = :id_order;
             ");
             $product->execute([
                 "order_total_HT"=> $orderTotalHT,
                 "order_total_TTC"=> $orderTotalTTC,
+                "user_id"=> $_SESSION["id"],
                 "id_order"=> $orderId
             ]);
 

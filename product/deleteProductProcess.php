@@ -44,10 +44,11 @@ echo htmlHead("Suppression d'un produit", "../style");
 
                 $product = $bdd->prepare("
                     UPDATE products
-                    SET deleted = 1, delete_date = NOW()
+                    SET user_id = :user_id, deleted = 1, delete_date = NOW()
                     WHERE id = :product_id;
                 ");
                 $product->execute([
+                    "user_id"=> $_SESSION["id"],
                     "product_id"=> $productId
                 ]);
 

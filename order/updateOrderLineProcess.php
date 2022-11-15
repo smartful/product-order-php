@@ -108,12 +108,13 @@ echo htmlHead("Formulaire de modification", "../style");
                 // Finalement on met à jour la commande
                 $product = $bdd->prepare("
                     UPDATE orders
-                    SET total_HT = :order_total_HT, total_TTC = :order_total_TTC
+                    SET total_HT = :order_total_HT, total_TTC = :order_total_TTC, user_id = :user_id, update_date = NOW()
                     WHERE id = :id_order;
                 ");
                 $product->execute([
                     "order_total_HT"=> $orderTotalHT,
                     "order_total_TTC"=> $orderTotalTTC,
+                    "user_id"=> $_SESSION["id"],
                     "id_order"=> $orderId
                 ]);
 
