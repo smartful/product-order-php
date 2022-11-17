@@ -62,6 +62,7 @@ echo htmlHead("Commandes", "../style");
                         <th>Total HT</th>
                         <th>Total TTC</th>
                         <th>Détail</th>
+                        <th>Impression</th>
                         <th>Supprimer</th>
                     </tr>
                 </thead>
@@ -75,6 +76,11 @@ echo htmlHead("Commandes", "../style");
                             <td style="text-align:center;">
                                 <a href="detailOrder.php?id=<?= $data[$i]["id"]; ?>">
                                     <img src="../images/details.png" />
+                                </a>
+                            </td>
+                            <td style="text-align:center;">
+                                <a href="printOrder.php?id=<?= $data[$i]["id"]; ?>">
+                                    <img src="../images/print.png" />
                                 </a>
                             </td>
                             <td style="text-align:center;">
