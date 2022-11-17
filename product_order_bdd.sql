@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.2
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost
--- Généré le : dim. 13 nov. 2022 à 22:49
--- Version du serveur : 10.4.25-MariaDB
--- Version de PHP : 8.1.10
+-- Host: localhost:3306
+-- Generation Time: Nov 17, 2022 at 02:46 AM
+-- Server version: 5.7.24
+-- PHP Version: 8.1.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `productorder`
+-- Database: `productorder`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `cities`
+-- Table structure for table `cities`
 --
 
 CREATE TABLE `cities` (
@@ -36,7 +36,7 @@ CREATE TABLE `cities` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `cities`
+-- Dumping data for table `cities`
 --
 
 INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitude_deg`) VALUES
@@ -36798,7 +36798,7 @@ INSERT INTO `cities` (`id`, `city_name`, `postal_code`, `longitude_deg`, `latitu
 -- --------------------------------------------------------
 
 --
--- Structure de la table `companies`
+-- Table structure for table `companies`
 --
 
 CREATE TABLE `companies` (
@@ -36810,12 +36810,12 @@ CREATE TABLE `companies` (
   `siret` varchar(14) NOT NULL,
   `add_date` datetime NOT NULL,
   `update_date` datetime NOT NULL,
-  `deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `delete_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `companies`
+-- Dumping data for table `companies`
 --
 
 INSERT INTO `companies` (`id`, `name`, `address_1`, `address_2`, `city_id`, `siret`, `add_date`, `update_date`, `deleted`, `delete_date`) VALUES
@@ -36825,13 +36825,13 @@ INSERT INTO `companies` (`id`, `name`, `address_1`, `address_2`, `city_id`, `sir
 -- --------------------------------------------------------
 
 --
--- Structure de la table `customers`
+-- Table structure for table `customers`
 --
 
 CREATE TABLE `customers` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `is_company` tinyint(1) NOT NULL DEFAULT 1,
+  `is_company` tinyint(1) NOT NULL DEFAULT '1',
   `user_id` int(11) NOT NULL,
   `address_1` varchar(100) NOT NULL,
   `address_2` varchar(100) NOT NULL,
@@ -36840,54 +36840,59 @@ CREATE TABLE `customers` (
   `phone` varchar(20) NOT NULL,
   `add_date` datetime NOT NULL,
   `update_date` datetime NOT NULL,
-  `deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `delete_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `customers`
+-- Dumping data for table `customers`
 --
 
 INSERT INTO `customers` (`id`, `name`, `is_company`, `user_id`, `address_1`, `address_2`, `city_id`, `email`, `phone`, `add_date`, `update_date`, `deleted`, `delete_date`) VALUES
 (1, 'Nounours Building Ltd', 1, 3, '27 avenue des animaux', '', 26152, 'nounours.boss@gmail.com', '01 11 22 33 44', '2022-11-13 01:26:21', '2022-11-13 01:26:21', 0, NULL),
-(2, 'Miaou Blanc Consulting', 1, 2, '16 rue de papillons', '', 35998, 'miaou.blanc@miaoublancconsulting.com', '01 11 22 33 55', '2022-11-13 16:54:30', '2022-11-13 16:54:30', 0, NULL);
+(2, 'Miaou Blanc Consulting', 1, 2, '16 rue de papillons', '', 36003, 'miaou.blanc@miaoublancconsulting.com', '01 11 22 33 55', '2022-11-13 16:54:30', '2022-11-14 04:36:25', 1, '2022-11-15 04:48:55'),
+(3, 'Gros Nounours BTP', 1, 3, '6 rue Spider Man', '', 30438, 'gros.nounours@gmail.com', '01 01 02 03 04', '2022-11-15 05:26:46', '2022-11-15 05:26:46', 0, NULL),
+(4, 'Vieux Babar', 0, 3, '27 rue des marécages', '', 35926, 'vieux.babar@gmail.com', '01 99 88 77 66', '2022-11-15 05:27:59', '2022-11-15 05:27:59', 0, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `orders`
+-- Table structure for table `orders`
 --
 
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
   `total_HT` float NOT NULL,
   `total_TTC` float NOT NULL,
   `add_date` datetime NOT NULL,
   `update_date` datetime NOT NULL,
-  `deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `delete_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `orders`
+-- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `user_id`, `total_HT`, `total_TTC`, `add_date`, `update_date`, `deleted`, `delete_date`) VALUES
-(1, 2, 6813.98, 8174.17, '2022-11-02 02:43:27', '2022-11-02 02:43:27', 0, NULL),
-(2, 2, 5804.88, 6950.21, '2022-11-02 03:03:51', '2022-11-02 03:03:51', 0, NULL),
-(3, 2, 2033.85, 2421.07, '2022-11-02 03:08:28', '2022-11-02 03:08:28', 1, '2022-11-07 03:58:34'),
-(4, 2, 16327, 19587.1, '2022-11-02 03:14:55', '2022-11-02 03:14:55', 0, NULL),
-(5, 2, 1165.59, 1229.7, '2022-11-05 02:47:10', '2022-11-05 02:47:10', 0, NULL),
-(6, 2, 773.95, 896.266, '2022-11-09 02:45:36', '2022-11-09 02:45:36', 0, NULL),
-(7, 2, 20289.9, 24347.9, '2022-11-09 02:48:27', '2022-11-09 02:48:27', 1, '2022-11-09 02:53:03'),
-(8, 2, 75719.6, 90863.5, '2022-11-09 03:07:23', '2022-11-09 03:07:23', 1, '2022-11-12 23:54:44'),
-(9, 3, 443.89, 468.304, '2022-11-12 04:20:05', '2022-11-12 04:20:05', 0, NULL);
+INSERT INTO `orders` (`id`, `user_id`, `customer_id`, `total_HT`, `total_TTC`, `add_date`, `update_date`, `deleted`, `delete_date`) VALUES
+(1, 3, 1, 5097, 6116.4, '2022-11-02 02:43:27', '2022-11-15 05:19:24', 0, NULL),
+(2, 2, 2, 5804.88, 6950.21, '2022-11-02 03:03:51', '2022-11-02 03:03:51', 0, NULL),
+(3, 2, 0, 2033.85, 2421.07, '2022-11-02 03:08:28', '2022-11-02 03:08:28', 1, '2022-11-07 03:58:34'),
+(4, 3, 1, 22024, 26423.5, '2022-11-02 03:14:55', '2022-11-15 05:20:47', 0, NULL),
+(5, 2, 2, 1165.59, 1229.7, '2022-11-05 02:47:10', '2022-11-05 02:47:10', 0, NULL),
+(6, 3, 0, 773.95, 896.266, '2022-11-09 02:45:36', '2022-11-09 02:45:36', 1, '2022-11-15 05:24:43'),
+(7, 2, 0, 20289.9, 24347.9, '2022-11-09 02:48:27', '2022-11-09 02:48:27', 1, '2022-11-09 02:53:03'),
+(8, 2, 0, 75719.6, 90863.5, '2022-11-09 03:07:23', '2022-11-09 03:07:23', 1, '2022-11-12 23:54:44'),
+(9, 3, 3, 443.89, 468.304, '2022-11-12 04:20:05', '2022-11-12 04:20:05', 0, NULL),
+(11, 2, 4, 661.97, 778.127, '2022-11-17 03:44:24', '2022-11-17 03:44:24', 0, NULL),
+(12, 2, 1, 861.8, 988.948, '2022-11-17 03:44:58', '2022-11-17 03:44:58', 0, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `order_lines`
+-- Table structure for table `order_lines`
 --
 
 CREATE TABLE `order_lines` (
@@ -36904,24 +36909,24 @@ CREATE TABLE `order_lines` (
   `total_TTC` float NOT NULL,
   `add_date` datetime NOT NULL,
   `update_date` datetime NOT NULL,
-  `deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `delete_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `order_lines`
+-- Dumping data for table `order_lines`
 --
 
 INSERT INTO `order_lines` (`id`, `order_id`, `user_id`, `product_id`, `reference`, `designation`, `unit_price`, `rate`, `quantity`, `total_HT`, `total_TTC`, `add_date`, `update_date`, `deleted`, `delete_date`) VALUES
-(1, 1, 2, 2, 'KBTR124', 'I phone 14', 1699, 20, 4, 6796, 8155.2, '2022-11-02 02:43:27', '2022-11-02 02:43:27', 0, NULL),
-(2, 1, 2, 1, 'XKCR845', 'Livre sur Elon Musk', 8.99, 5.5, 2, 17.98, 18.9689, '2022-11-02 02:43:27', '2022-11-02 02:43:27', 0, NULL),
+(1, 1, 3, 2, 'KBTR124', 'I phone 14', 1699, 20, 3, 5097, 6116.4, '2022-11-02 02:43:27', '2022-11-15 05:12:42', 0, NULL),
+(2, 1, 3, 1, 'XKCR845', 'Livre sur Elon Musk', 8.99, 5.5, 2, 17.98, 18.9689, '2022-11-02 02:43:27', '2022-11-02 02:43:27', 1, '2022-11-15 05:19:24'),
 (3, 2, 2, 4, 'KBTR125', 'I phone 14 PRO', 1899, 20, 3, 5697, 6836.4, '2022-11-02 03:03:51', '2022-11-02 03:03:51', 0, NULL),
 (4, 2, 2, 1, 'XKCR845', 'Livre sur Elon Musk', 8.99, 5.5, 12, 107.88, 113.813, '2022-11-02 03:03:51', '2022-11-04 04:52:32', 0, NULL),
 (5, 3, 2, 1, 'XKCR845', 'Livre sur Elon Musk', 8.99, 5.5, 15, 134.85, 142.267, '2022-11-02 03:08:28', '2022-11-02 03:08:28', 0, NULL),
 (6, 3, 2, 4, 'KBTR125', 'I phone 14 PRO', 1899, 20, 1, 1899, 2278.8, '2022-11-02 03:08:28', '2022-11-02 03:08:28', 0, NULL),
 (7, 4, 2, 2, 'KBTR124', 'I phone 14', 1699, 20, 4, 6796, 8155.2, '2022-11-02 03:14:55', '2022-11-05 02:43:37', 0, NULL),
 (8, 4, 2, 1, 'XKCR845', 'Livre sur Elon Musk', 8.99, 5.5, 4, 35.96, 37.9378, '2022-11-02 03:14:55', '2022-11-02 03:14:55', 0, NULL),
-(9, 4, 2, 4, 'KBTR125', 'I phone 14 PRO', 1899, 20, 5, 9495, 11394, '2022-11-02 03:14:55', '2022-11-02 03:14:55', 0, NULL),
+(9, 4, 3, 4, 'KBTR125', 'I phone 14 PRO', 1899, 20, 8, 15192, 18230.4, '2022-11-02 03:14:55', '2022-11-15 05:20:47', 0, NULL),
 (10, 5, 2, 1, 'XKCR845', 'Livre sur Elon Musk', 8.99, 5.5, 23, 206.77, 218.142, '2022-11-05 02:47:10', '2022-11-05 03:07:59', 0, NULL),
 (11, 5, 2, 5, 'XKCL244', 'Manuel de physique quantique', 55.99, 5.5, 11, 615.89, 649.764, '2022-11-05 02:47:10', '2022-11-05 02:47:58', 0, NULL),
 (12, 5, 2, 6, 'XKCL276', 'Manuel de probabilité et statistique', 48.99, 5.5, 7, 342.93, 361.791, '2022-11-05 02:47:10', '2022-11-05 02:47:10', 0, NULL),
@@ -36938,12 +36943,19 @@ INSERT INTO `order_lines` (`id`, `order_id`, `user_id`, `product_id`, `reference
 (23, 9, 3, 1, 'XKCR845', 'Livre sur Elon Musk', 7.99, 5.5, 3, 23.97, 25.2883, '2022-11-12 04:20:05', '2022-11-12 04:20:05', 0, NULL),
 (24, 9, 3, 5, 'XKCL244', 'Manuel de physique quantique', 55.99, 5.5, 4, 223.96, 236.278, '2022-11-12 04:20:05', '2022-11-12 04:20:05', 0, NULL),
 (25, 9, 3, 6, 'XKCL276', 'Manuel de probabilité et statistique', 48.99, 5.5, 4, 195.96, 206.738, '2022-11-12 04:20:05', '2022-11-12 23:44:57', 0, NULL),
-(26, 9, 3, 2, 'KBTR124', 'I phone 14', 1699, 20, 4, 6796, 8155.2, '2022-11-12 04:20:06', '2022-11-12 23:29:29', 1, '2022-11-12 23:43:46');
+(26, 9, 3, 2, 'KBTR124', 'I phone 14', 1699, 20, 4, 6796, 8155.2, '2022-11-12 04:20:06', '2022-11-12 23:29:29', 1, '2022-11-12 23:43:46'),
+(27, 10, 2, 5, 'XKCL244', 'Manuel de physique quantique', 55.99, 5.5, 2, 111.98, 118.139, '2022-11-17 03:38:21', '2022-11-17 03:38:21', 0, NULL),
+(28, 10, 2, 8, 'AIUP335', 'Playstation 5', 549.99, 20, 1, 549.99, 659.988, '2022-11-17 03:38:21', '2022-11-17 03:38:21', 0, NULL),
+(29, 11, 2, 5, 'XKCL244', 'Manuel de physique quantique', 55.99, 5.5, 2, 111.98, 118.139, '2022-11-17 03:44:24', '2022-11-17 03:44:24', 0, NULL),
+(30, 11, 2, 8, 'AIUP335', 'Playstation 5', 549.99, 20, 1, 549.99, 659.988, '2022-11-17 03:44:24', '2022-11-17 03:44:24', 0, NULL),
+(31, 12, 2, 1, 'XKCR845', 'Livre sur Elon Musk', 7.99, 5.5, 15, 119.85, 126.442, '2022-11-17 03:44:58', '2022-11-17 03:44:58', 0, NULL),
+(32, 12, 2, 6, 'XKCL276', 'Manuel de probabilité et statistique', 47.99, 5.5, 4, 191.96, 202.518, '2022-11-17 03:44:58', '2022-11-17 03:44:58', 0, NULL),
+(33, 12, 2, 8, 'AIUP335', 'Playstation 5', 549.99, 20, 1, 549.99, 659.988, '2022-11-17 03:44:58', '2022-11-17 03:44:58', 0, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `products`
+-- Table structure for table `products`
 --
 
 CREATE TABLE `products` (
@@ -36955,12 +36967,12 @@ CREATE TABLE `products` (
   `rate` float NOT NULL,
   `add_date` datetime NOT NULL,
   `update_date` datetime NOT NULL,
-  `deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `delete_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `products`
+-- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`id`, `user_id`, `reference`, `designation`, `unit_price`, `rate`, `add_date`, `update_date`, `deleted`, `delete_date`) VALUES
@@ -36969,22 +36981,23 @@ INSERT INTO `products` (`id`, `user_id`, `reference`, `designation`, `unit_price
 (3, 2, 'AIUJ748', 'Croquettes pour nounours', 42.99, 5.5, '2022-11-01 15:52:01', '2022-11-01 18:44:04', 1, '2022-11-01 18:46:00'),
 (4, 2, 'KBTR125', 'I phone 14 PRO', 1899, 20, '2022-11-01 18:51:32', '2022-11-01 18:51:32', 1, '2022-11-07 03:56:08'),
 (5, 2, 'XKCL244', 'Manuel de physique quantique', 55.99, 5.5, '2022-11-05 02:45:12', '2022-11-05 02:45:12', 0, NULL),
-(6, 2, 'XKCL276', 'Manuel de probabilité et statistique', 48.99, 5.5, '2022-11-05 02:46:21', '2022-11-05 02:46:21', 0, NULL),
+(6, 3, 'XKCL276', 'Manuel de probabilité et statistique', 47.99, 5.5, '2022-11-05 02:46:21', '2022-11-15 05:10:31', 0, NULL),
 (7, 2, 'XKCR689', 'Livre sur Jeff Bezos', 15.49, 5.5, '2022-11-09 02:15:16', '2022-11-09 02:15:16', 1, '2022-11-09 02:22:41'),
 (8, 2, 'AIUP335', 'Playstation 5', 549.99, 20, '2022-11-09 02:29:06', '2022-11-09 02:29:06', 0, NULL),
 (9, 3, 'AIUJ476', 'Playstation 4', 319.99, 20, '2022-11-11 20:34:06', '2022-11-11 21:06:05', 1, '2022-11-11 21:15:59'),
-(10, 3, 'AIUJ123', 'Playstation 2', 229.99, 20, '2022-11-11 21:17:32', '2022-11-11 21:18:09', 1, '2022-11-11 21:18:22');
+(10, 3, 'AIUJ123', 'Playstation 2', 229.99, 20, '2022-11-11 21:17:32', '2022-11-11 21:18:09', 1, '2022-11-11 21:18:22'),
+(11, 3, 'GKL811', 'Sony A95K', 3499.99, 20, '2022-11-15 05:08:37', '2022-11-15 05:08:37', 1, '2022-11-15 05:09:49');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `company_id` int(11) DEFAULT NULL,
-  `is_active` tinyint(1) NOT NULL DEFAULT 1,
+  `is_active` tinyint(1) NOT NULL DEFAULT '1',
   `position` enum('CEO','SALES','CLERK','') NOT NULL DEFAULT 'CLERK',
   `firstname` varchar(50) NOT NULL,
   `lastname` varchar(50) NOT NULL,
@@ -36994,7 +37007,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `company_id`, `is_active`, `position`, `firstname`, `lastname`, `email`, `password`, `register_date`) VALUES
@@ -37003,11 +37016,11 @@ INSERT INTO `users` (`id`, `company_id`, `is_active`, `position`, `firstname`, `
 (4, 2, 1, 'CEO', 'Petit', 'NOUNOURS', 'nounours.gentil@gmail.com', '$2y$10$vYthKgiHdSMwu9AiCpFtf.JazhpNd.nvcuOHZ2waUF8JavMICZusG', '2022-11-13 16:46:15');
 
 --
--- Index pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `cities`
+-- Indexes for table `cities`
 --
 ALTER TABLE `cities`
   ADD PRIMARY KEY (`id`),
@@ -37016,83 +37029,83 @@ ALTER TABLE `cities`
   ADD KEY `ville_longitude_latitude_deg` (`longitude_deg`,`latitude_deg`);
 
 --
--- Index pour la table `companies`
+-- Indexes for table `companies`
 --
 ALTER TABLE `companies`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `customers`
+-- Indexes for table `customers`
 --
 ALTER TABLE `customers`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `orders`
+-- Indexes for table `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `order_lines`
+-- Indexes for table `order_lines`
 --
 ALTER TABLE `order_lines`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `products`
+-- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `cities`
+-- AUTO_INCREMENT for table `cities`
 --
 ALTER TABLE `cities`
   MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36855;
 
 --
--- AUTO_INCREMENT pour la table `companies`
+-- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT pour la table `customers`
+-- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT pour la table `orders`
+-- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT pour la table `order_lines`
+-- AUTO_INCREMENT for table `order_lines`
 --
 ALTER TABLE `order_lines`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
--- AUTO_INCREMENT pour la table `products`
+-- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT pour la table `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;

@@ -39,7 +39,7 @@ echo htmlHead("Formulaire d'ajout", "../style");
                 $displayText .= "Vous n'avez pas saisie toutes les informations nécessaires<br/>";
                 $displayText .= "Veillez, s'il vous plait, réessayer : <a href='addOrder.php'>Formulaire d'ajout d'une commande</a>";
             } else {
-                // filtrage des lignes vide
+                // Filtrage des lignes vide
                 $fillProducts = [];
                 for ($i = 0; $i < MAX_ORDER_LINES; $i++) {
                     if (!empty($_POST["product_id_".$i]) AND !empty($_POST["quantity_".$i])) {
@@ -53,16 +53,20 @@ echo htmlHead("Formulaire d'ajout", "../style");
                     }
                 }
 
+                // On récupère l'ID du client
+                $customerId = intval($_POST['customer_id']);
+
                 // On se connecte au la SGBD Mysql
                 include("../utils/connexion_db.php");
 
                 // On crée la commande
                 $order = $bdd->prepare("
-                    INSERT INTO orders(user_id, total_HT, total_TTC, add_date, update_date)
-                    VALUES(:user_id, :total_HT, :total_TTC, NOW(), NOW());
+                    INSERT INTO orders(user_id, customer_id, total_HT, total_TTC, add_date, update_date)
+                    VALUES(:user_id, :customer_id, :total_HT, :total_TTC, NOW(), NOW());
                 ");
                 $order->execute([
                     "user_id" => $_SESSION["id"],
+                    "customer_id" => $customerId,
                     "total_HT" => 0.0,
                     "total_TTC" => 0.0
                 ]);

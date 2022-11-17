@@ -47,13 +47,52 @@ echo htmlHead("Formulaire d'ajout", "../style");
             "company_id"=> $_SESSION["company_id"],
         ]);
         $dataProduct = $products->fetchAll();
+        $products->closeCursor();
+
+        $customers = $bdd->prepare("
+            SELECT customers.id, customers.name
+            FROM customers
+            INNER JOIN users ON users.id = customers.user_id
+            INNER JOIN companies ON companies.id = users.company_id
+            WHERE users.company_id = :company_id
+            AND customers.deleted = 0;
+        ");
+        $customers->execute([
+            "company_id"=> $_SESSION["company_id"],
+        ]);
+        $dataCustomers = $customers->fetchAll();
+        $customers->closeCursor();
         ?>
 
         <div id="corps">
             <h1>Ajout d'une commande</h1>
             <form method="post" action="addOrderProcess.php">
                 <fieldset>
-                    <legend>Information du de la commande</legend>
+                    <legend>Information sur le client</legend>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Client</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <select name="customer_id">
+                                        <option value=""></option>
+                                        <?php foreach($dataCustomers as $customers): ?>
+                                            <option value="<?= $customers["id"]; ?>">
+                                                <?= $customers["name"]; ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+                <fieldset>
+                    <legend>Information de la commande</legend>
                     <table>
                         <thead>
                             <tr>

@@ -40,8 +40,9 @@ echo htmlHead("Commandes", "../style");
             include("../utils/connexion_db.php");
 
             $orders = $bdd->prepare("
-                SELECT orders.id, orders.total_HT, orders.total_TTC 
+                SELECT orders.id, orders.total_HT, orders.total_TTC, customers.name
                 FROM orders
+                INNER JOIN customers ON customers.id = orders.customer_id
                 INNER JOIN users ON users.id = orders.user_id
                 INNER JOIN companies ON companies.id = users.company_id
                 WHERE users.company_id = :company_id
@@ -57,6 +58,7 @@ echo htmlHead("Commandes", "../style");
                 <thead>
                     <tr>
                         <th>Numéro</th>
+                        <th>Client</th>
                         <th>Total HT</th>
                         <th>Total TTC</th>
                         <th>Détail</th>
@@ -67,6 +69,7 @@ echo htmlHead("Commandes", "../style");
                     <?php for($i=0; $i<count($data); $i++) :?>
                         <tr>
                             <td><?= $data[$i]["id"]; ?></td>
+                            <td><?= $data[$i]["name"]; ?></td>
                             <td><?= round($data[$i]["total_HT"], 2); ?> €</td>
                             <td><?= round($data[$i]["total_TTC"], 2); ?> €</td>
                             <td style="text-align:center;">
