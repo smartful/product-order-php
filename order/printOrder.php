@@ -20,7 +20,7 @@ $company->closeCursor();
 
 // On récupère les informations de la commande
 $order = $bdd->prepare("
-    SELECT orders.total_HT, orders.total_TTC,
+    SELECT orders.total_HT, orders.total_TTC, DATE_FORMAT(orders.add_date, '%d/%m/%Y') AS add_date,
         customers.name, customers.address_1, customers.address_1, cities.city_name, cities.postal_code
     FROM orders
     INNER JOIN customers ON customers.id = orders.customer_id
@@ -81,6 +81,7 @@ $orderLines->closeCursor();
                 </div>
             </div>
             <h1>Commande n°<?= $orderId; ?></h1>
+            <h3>Date de création : <?= $dataOrder["add_date"]; ?></h3>
             <div class="order_lines">
                 <table>
                     <thead>
