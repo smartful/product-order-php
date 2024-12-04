@@ -47,6 +47,7 @@ body {
 
 #corps {
   margin-left: 140px;
+  min-height: calc(68vh - 150px);
 }
 
 #pied_de_page {
