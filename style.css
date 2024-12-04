@@ -1,19 +1,30 @@
+:root {
+  --main-bg-color: #111;
+  --second-bg-color: #5a89f7;
+  --second-bg-color-option: #0a40be;
+  --main-action-color: #ff6e6e;
+  --main-foreground-color: #ddd;
+}
+
 body {
   width: 1024px;
   margin: auto;
   margin-top: 5px;
   margin-bottom: 5px;
-  background-color: #222;
-  color: #ddd;
+  background-color: var(--main-bg-color);
+  color: var(--main-foreground-color);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #en_tete {
   width: 1024px;
   height: 100px;
-  background-color: rgb(169, 182, 209);
+  background-color: var(--second-bg-color);
   margin-bottom: 10px;
   color: black;
   padding: 15px 0 0 30px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 10px var(--second-bg-color-option);
 }
 
 #menu {
@@ -28,16 +39,25 @@ body {
   margin-bottom: 10px;
 }
 
+.element_menu {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
 #corps {
   margin-left: 140px;
-  margin-bottom: 20px;
 }
 
 #pied_de_page {
   text-align: center;
   margin-top: 230px;
+  padding-top: 2px;
+  padding-bottom: 2px;
   color: black;
-  background-color: rgb(169, 182, 209);
+  background-color: var(--second-bg-color);
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px var(--second-bg-color-option);
 }
 
 ul#menu_horizontale {
@@ -50,7 +70,7 @@ ul#menu_horizontale li {
 
 a {
   text-decoration: none;
-  color: rgb(169, 182, 209);
+  color: var(--second-bg-color);
 }
 
 a:hover {
@@ -62,21 +82,22 @@ a:hover {
 }
 
 ul {
-  color: rgb(169, 182, 209);
+  color: var(--second-bg-color);
 }
 
 .description {
   background-color: rgb(75, 71, 71);
 }
 
-label {
-  color: #ddd;
+fieldset {
+  border-radius: 10px;
+  padding: 20px;
 }
 
 table,
 th,
 td {
-  border: 3px ridge rgb(169, 182, 209);
+  border: 3px ridge var(--second-bg-color);
   border-collapse: collapse;
   padding: 4px;
 }
@@ -122,13 +143,41 @@ tfoot {
 }
 
 .actionButton {
-  background-color: rgb(255, 110, 110);
+  background-color: var(--main-action-color);
 }
 
 .validationButton {
-  background-color: rgb(169, 182, 209);
+  background-color: var(--second-bg-color);
 }
 
 .deconnexion_btn {
-  color: rgb(255, 110, 110);
+  color: var(--main-action-color);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.form-row > label {
+  flex: 1;
+}
+
+.form-row > input {
+  flex: 2;
+}
+
+label {
+  color: var(--main-foreground-color);
+}
+
+input {
+  padding: 8px 10px;
 }

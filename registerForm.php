@@ -101,7 +101,7 @@ $cities->closeCursor();
                 </fieldset>
 
                 <p>
-                    <input type="submit" value="Envoyer"/>
+                    <input type="submit" value="Envoyer" class="cta_button validationButton"/>
                 </p>
             </form>
         </div>

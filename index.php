@@ -15,16 +15,17 @@ echo htmlHead("Product Order", "style");
             <form method="post" action="loginProcess.php">
                 <fieldset>
                     <legend>Vos accès</legend>
-                    <table>
-                        <tr>
-                            <td><label for="email">Email</label> </td>
-                            <td><input type=text name="email" id="email"/></td>
-                        </tr>
-                        <tr>
-                            <td><label for="pass">Mot de passe</label> </td>
-                            <td><input type=password name="pass" id="pass"/></td>
-                        </tr>
-                    </table>
+                    <div class="login-form">
+                        <div class="form-row">
+                            <label for="email">Email</label>
+                            <input type=text name="email" id="email"/>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="pass">Mot de passe</label>
+                            <input type=password name="pass" id="pass"/>
+                        </div>
+                    </div>
                 </fieldset>
                 <p>
                     <input type="submit" value="Envoyer" class="cta_button validationButton"/>
