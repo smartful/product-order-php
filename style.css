@@ -171,7 +171,7 @@ tfoot {
   flex: 1;
 }
 
-.form-row > input {
+.form-row > input, select {
   flex: 2;
 }
 
@@ -179,6 +179,6 @@ label {
   color: var(--main-foreground-color);
 }
 
-input {
+input, select {
   padding: 8px 10px;
 }
