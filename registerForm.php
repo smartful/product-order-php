@@ -1,5 +1,5 @@
 <?php
-require("./layout/htmlHead.php");
+require("./layout/layoutFunctions.php");
 echo htmlHead("Inscription", "style");
 include("./utils/connexion_db.php");
 $cities = $bdd->query('SELECT * FROM cities ORDER BY city_name;');

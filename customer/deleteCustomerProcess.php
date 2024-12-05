@@ -1,5 +1,5 @@
 <?php
-require("../layout/htmlHead.php");
+require("../layout/layoutFunctions.php");
 session_start();
 echo htmlHead("Formulaire de suppression", "../style");
 ?>

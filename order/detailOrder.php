@@ -1,5 +1,5 @@
 <?php
-require("../layout/htmlHead.php");
+require("../layout/layoutFunctions.php");
 session_start();
 echo htmlHead("Lignes d'une Commande", "../style");
 $orderId = intval($_GET["id"]);

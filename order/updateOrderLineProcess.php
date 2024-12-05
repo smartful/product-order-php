@@ -1,6 +1,6 @@
 <?php
 session_start();
-require("../layout/htmlHead.php");
+require("../layout/layoutFunctions.php");
 require("../utils/calculs.php");
 echo htmlHead("Formulaire de modification", "../style");
 ?>

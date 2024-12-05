@@ -1,11 +1,12 @@
 <?php
-require("./layout/htmlHead.php");
+require("./layout/layoutFunctions.php");
 session_start();
 echo htmlHead("Home", "style");
 ?>
     <body>
     <?php include("./layout/header.php"); ?>
-    <?php include("deconnexionMenu.php"); ?>
+    <!-- le menu principal -->
+    <?= deconnexionMenu() ?>
 
     <!-- le menu des activités -->
     <?php include("themesMenu.php"); ?>

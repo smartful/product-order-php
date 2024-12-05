@@ -1,5 +1,5 @@
 <?php
-require("../layout/htmlHead.php");
+require("../layout/layoutFunctions.php");
 require("../utils/constants.php");
 session_start();
 echo htmlHead("Formulaire d'ajout", "../style");

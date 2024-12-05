@@ -1,5 +1,5 @@
 <?php
-require("../layout/htmlHead.php");
+require("../layout/layoutFunctions.php");
 session_start();
 $orderId = intval($_GET["id"]);
 // On se connecte au la SGBD Mysql

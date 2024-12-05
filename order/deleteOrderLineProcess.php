@@ -1,5 +1,5 @@
 <?php
-require("../layout/htmlHead.php");
+require("../layout/layoutFunctions.php");
 session_start();
 echo htmlHead("Suppression d'une ligne de commande", "../style");
 $lineOrderId = intval($_POST['line_order_id']);

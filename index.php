@@ -1,5 +1,5 @@
 <?php
-require("./layout/htmlHead.php");
+require("./layout/layoutFunctions.php");
 echo htmlHead("Product Order", "style");
 ?>
     <body>
