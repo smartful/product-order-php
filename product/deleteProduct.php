@@ -6,16 +6,7 @@ echo htmlHead("Confirmation de suppression", "../style");
     <body>
         <?php include("../layout/header.php"); ?>
         <!-- le menu principal -->
-        <div id="menu">
-            <div class="element_menu">
-                <h3>Product Order</h3>
-                <ul>
-                    <li><a href="../home.php">Home</a></li>
-                    <li><a href="../profil.php">Profil</a></li>
-                    <li><a href="../deconnexion.php" class="deconnexion_btn">Deconnexion</a></li>
-                </ul>
-            </div>
-        </div>
+        <?= deconnexionMenu("../") ?>
 
         <!-- le menu des activités -->
         <div id="menu_right">

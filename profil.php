@@ -5,7 +5,7 @@ echo htmlHead("Profil", "style");
 ?>
     <body>
     <?php include("./layout/header.php"); ?>
-    <?php include("deconnexionMenu.php"); ?>
+    <?= deconnexionMenu() ?>
 
     <!-- le menu des activités -->
     <?php include("themesMenu.php"); ?>
