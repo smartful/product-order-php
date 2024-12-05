@@ -155,7 +155,7 @@ tfoot {
   color: var(--main-action-color);
 }
 
-.login-form {
+.group-form {
   display: flex;
   flex-direction: column;
   gap: 2rem;

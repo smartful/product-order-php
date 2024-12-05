@@ -15,7 +15,7 @@ echo htmlHead("Product Order", "style");
             <form method="post" action="loginProcess.php">
                 <fieldset>
                     <legend>Vos accès</legend>
-                    <div class="login-form">
+                    <div class="group-form">
                         <div class="form-row">
                             <label for="email">Email</label>
                             <input type=text name="email" id="email"/>
