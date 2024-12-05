@@ -14,7 +14,7 @@ echo htmlHead("Product Order", "style");
                 if ($_POST['company_name'] != ""
                         AND $_POST['siret'] != ""
                         AND $_POST['address_1'] != ""
-                        AND $_POST['city'] != ""
+                        AND $_POST['city_id'] != ""
                         AND $_POST['firstname'] != ""
                         AND $_POST['lastname'] != ""
                         AND $_POST['position'] != ""
@@ -25,7 +25,7 @@ echo htmlHead("Product Order", "style");
                     $siret = htmlspecialchars($_POST['siret']);
                     $address1 = htmlspecialchars($_POST['address_1']);
                     $address2 = isset($_POST['address_2']) ? htmlspecialchars($_POST['address_2']) : "";
-                    $cityId = intval($_POST['city']);
+                    $cityId = intval($_POST['city_id']);
                     $firstname = htmlspecialchars($_POST['firstname']);
                     $lastname = htmlspecialchars($_POST['lastname']);
                     $position = htmlspecialchars($_POST['position']);

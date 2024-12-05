@@ -90,10 +90,7 @@ ul {
   background-color: rgb(75, 71, 71);
 }
 
-fieldset {
-  border-radius: 10px;
-  padding: 20px;
-}
+/* Tableaux */
 
 table,
 th,
@@ -115,6 +112,8 @@ tfoot {
 .table_form input {
   width: 80%;
 }
+
+/* Boutons */
 
 .button {
   width: 95px;
@@ -155,6 +154,13 @@ tfoot {
   color: var(--main-action-color);
 }
 
+/* Formulaires */
+
+fieldset {
+  border-radius: 10px;
+  padding: 20px;
+}
+
 .group-form {
   display: flex;
   flex-direction: column;
@@ -181,4 +187,24 @@ label {
 
 input, select {
   padding: 8px 10px;
+}
+
+/* autocomplete */
+.suggestions {
+  position: absolute;
+  border: 1px solid #ddd;
+  background-color: white;
+  color: black;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.suggestion-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background-color: #f0bebe;
 }

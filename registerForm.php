@@ -36,15 +36,15 @@ $cities->closeCursor();
                         </div>
                         <div class="form-row">
                             <label for="city">Ville</label>
-                            <input name="city" list="city" placeholder="Sélectionner la ville ...">
-                            <datalist  name="city" id="city">
-                                <option value="" selected></option>
-                                <?php for ($i = 0; $i < count($dataCities); $i++): ?>
-                                    <option value=<?= $dataCities[$i]['id']; ?>>
-                                        <?= "[".$dataCities[$i]['postal_code']."] ".$dataCities[$i]['city_name']; ?>
-                                    </option>
-                                <?php endfor; ?>
-                            </datalist >
+                            <input
+                                type="text"
+                                name="city_display"
+                                id="city_display"
+                                placeholder="Sélectionner une ville ou entrer le code postal..."
+                                autocomplete="off"
+                            />
+                            <input type="hidden" name="city_id" id="city_id" />
+                            <div id="suggestions" class="suggestions"></div>
                         </div>
                     </div>
                 </fieldset>
@@ -100,6 +100,7 @@ $cities->closeCursor();
                 </p>
             </form>
         </div>
+        <script src="./js/ajax/citiesAutocomplete.js"></script>
         <!-- le pied de page -->
         <?php include("./layout/footer.php"); ?>
     </body>
