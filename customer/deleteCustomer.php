@@ -90,8 +90,8 @@ echo htmlHead("Confirmation de suppression", "../style");
 
                 <form method="post" action="deleteCustomerProcess.php">
                     <input type="hidden" name="customer_id" value="<?= $data["id"]; ?>"/>
-                    <button class="button"><a href="customerList.php">Annuler</a></button>
-                    <input type="submit" value="Oui" class="button actionButton"/>
+                    <button class="cta_button"><a href="customerList.php">Annuler</a></button>
+                    <input type="submit" value="Oui" class="cta_button actionButton"/>
                 </form>
             <?php endif; ?>
         </div>

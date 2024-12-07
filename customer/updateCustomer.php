@@ -152,8 +152,8 @@ $cities = $bdd->query('SELECT * FROM cities ORDER BY city_name;');
                         </table>
                     </fieldset>
                     <p>
-                        <button class="button"><a href="customerList.php">Annuler</a></button>
-                        <input type="submit" value="Envoyer" class="button validationButton"/>
+                        <button class="cta_button"><a href="customerList.php">Annuler</a></button>
+                        <input type="submit" value="Envoyer" class="cta_button validationButton"/>
                     </p>
                 </form>
             <?php endif; ?>
