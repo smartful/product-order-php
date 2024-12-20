@@ -28,7 +28,7 @@ echo htmlHead("Formulaire de modification", "../style");
                     OR empty($_POST['name'])
                     OR empty($_POST['typology'])
                     OR empty($_POST['address_1'])
-                    OR empty($_POST['city'])
+                    OR empty($_POST['city_id'])
                     OR empty($_POST['email'])
                     OR empty($_POST['phone'])) {
                 $displayText .= "Vous n'avez pas saisie toutes les informations nécessaires<br/>";
@@ -40,7 +40,7 @@ echo htmlHead("Formulaire de modification", "../style");
                 $isCompany = $_POST['typology'] == "company" ? 1 : 0;
                 $address1 = htmlspecialchars($_POST['address_1']);
                 $address2 = isset($_POST['address_2']) ? htmlspecialchars($_POST['address_2']) : "";
-                $cityId = intval($_POST['city']);
+                $cityId = intval($_POST['city_id']);
                 $email = htmlspecialchars($_POST['email']);
                 $phone = htmlspecialchars($_POST['phone']);
 

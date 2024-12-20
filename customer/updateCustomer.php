@@ -25,8 +25,6 @@ $cities = $bdd->query('SELECT * FROM cities ORDER BY city_name;');
 
         <!-- On charge le produit -->
         <?php
-
-
         $customer = $bdd->prepare("
             SELECT customers.*, cities.id AS cities_id, cities.city_name, cities.postal_code
             FROM customers
@@ -114,17 +112,15 @@ $cities = $bdd->query('SELECT * FROM cities ORDER BY city_name;');
                             <tr>
                                 <td><label for="rate">Ville*</label> </td>
                                 <td>
-                                    <input name="city" list="city" placeholder=<?= $data['city_name']; ?>>
-                                    <datalist  name="city" id="city">
-                                        <option value="<?= $data["cities_id"]; ?>" selected>
-                                            <?= "[".$data['postal_code']."] ".$data['city_name']; ?>
-                                        </option>
-                                        <?php while ($dataCity = $cities->fetch()): ?>
-                                            <option value=<?= $dataCity['id']; ?>>
-                                                <?= "[".$dataCity['postal_code']."] ".$dataCity['city_name']; ?>
-                                            </option>
-                                        <?php endwhile; ?>
-                                    </datalist>
+                                    <input
+                                        type="text"
+                                        name="city_display"
+                                        id="city_display"
+                                        value="<?= "[".$data['postal_code']."] ".$data['city_name']; ?>"
+                                        autocomplete="off"
+                                    />
+                                    <input type="hidden" name="city_id" id="city_id" value=<?= $data["city_id"]; ?>/>
+                                    <div id="suggestions" class="suggestions"></div>
                                 </td>
                             </tr>
                             <tr>
@@ -158,6 +154,7 @@ $cities = $bdd->query('SELECT * FROM cities ORDER BY city_name;');
                 </form>
             <?php endif; ?>
         </div>
+        <script src="../js/ajax/citiesAutocomplete.js"></script>
         <?php include("../layout/footer.php"); ?>
     </body>
 </html>

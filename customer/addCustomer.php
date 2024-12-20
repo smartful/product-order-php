@@ -53,15 +53,15 @@ $cities = $bdd->query('SELECT * FROM cities ORDER BY city_name;');
                         <tr>
                             <td><label for="city">Ville*</label> </td>
                             <td>
-                                <input name="city" list="city" placeholder="Sélectionner la ville ...">
-                                <datalist  name="city" id="city">
-                                    <option value="" selected></option>
-                                    <?php while ($dataCity = $cities->fetch()): ?>
-                                        <option value=<?= $dataCity['id']; ?>>
-                                            <?= "[".$dataCity['postal_code']."] ".$dataCity['city_name']; ?>
-                                        </option>
-                                    <?php endwhile; ?>
-                                </datalist>
+                                <input
+                                    type="text"
+                                    name="city_display"
+                                    id="city_display"
+                                    placeholder="Sélectionner une ville ou entrer le code postal..."
+                                    autocomplete="off"
+                                />
+                                <input type="hidden" name="city_id" id="city_id" />
+                                <div id="suggestions" class="suggestions"></div>
                             </td>
                         </tr>
                         <tr>
@@ -79,6 +79,7 @@ $cities = $bdd->query('SELECT * FROM cities ORDER BY city_name;');
                 </p>
             </form>
         </div>
+        <script src="../js/ajax/citiesAutocomplete.js"></script>
         <?php include("../layout/footer.php"); ?>
     </body>
 </html>
